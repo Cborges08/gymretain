@@ -52,7 +52,13 @@
   - Use `crypto.randomUUID()` — never `Math.random()` — for any unique ID generation
   - Schema includes `external_id TEXT` on `members` for future Fácil integration (MEMB-07)
 
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Next.js 14 scaffold, Vitest setup, .env.example (Wave 1)
+- [ ] 01-02-PLAN.md — SQL migrations: schema, RLS policies, indexes (Wave 1)
+- [ ] 01-03-PLAN.md — Supabase client factories, TypeScript types, vercel.json (Wave 2)
+- [ ] 01-04-PLAN.md — Human checkpoint: apply migrations, configure Vercel (Wave 3)
 
 ---
 
