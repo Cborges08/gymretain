@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: Not started
-status: Ready to plan
-stopped_at: Completed 01-03-PLAN.md (Supabase client factories and database types)
-last_updated: "2026-03-26T12:02:26.178Z"
+current_plan: 1
+status: Executing Phase 02
+stopped_at: Completed 02-02-PLAN.md (Route protection middleware)
+last_updated: "2026-03-26T15:20:51.837Z"
 progress:
   total_phases: 9
   completed_phases: 1
-  total_plans: 4
-  completed_plans: 4
+  total_plans: 8
+  completed_plans: 5
 ---
 
 # Project State
@@ -20,15 +20,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** O dono da academia sabe, sem esforço, quais alunos estão sumindo — e recebe um empurrão para agir antes de perdê-los.
-**Current focus:** Phase 01 — project-scaffold-database-foundation
+**Current focus:** Phase 02 — admin-authentication
 
 ## Current Status
 
 **Phase:** 2
-**Current Plan:** Not started
+**Current Plan:** 1
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-26T11:09:18.204Z
-**Stopped at:** Completed 01-03-PLAN.md (Supabase client factories and database types)
+**Last session:** 2026-03-26T15:20:51.835Z
+**Stopped at:** Completed 02-02-PLAN.md (Route protection middleware)
 
 ## Decisions
 
@@ -38,6 +38,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - Phase 01: checkins_insert_public has no TO role restriction — enables anonymous QR check-in (D-12)
 - Phase 01: org_id RLS scoping uses JWT app_metadata — Phase 2 auth hook must populate this field
 - [Phase 01]: server.ts uses createServerClient from auth-helpers-nextjs v0.15, calling cookies() to resolve the store before passing to the client
+- [Phase 02]: Phase 02 Plan 02: createServerClient used in middleware directly (not wrapper) — next/headers unavailable in Edge Runtime
+- [Phase 02]: Phase 02 Plan 02: getAll/setAll cookie pattern used — deprecated get/set/remove pattern avoided
 
 ## Performance Metrics
 
@@ -46,6 +48,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | 01    | 01   | 254          | 3     | 13    |
 | 01    | 02   | 111          | 3     | 3     |
 | Phase 01 P03 | 190 | 3 tasks | 6 files |
+| Phase 02 P02 | 149 | 1 tasks | 2 files |
 
 ## Milestone Progress
 

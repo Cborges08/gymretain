@@ -324,7 +324,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold & Database Foundation | 1/4 | In Progress|  |
-| 2. Admin Authentication | 0/? | Not started | - |
+| 2. Admin Authentication | 1/4 | In Progress|  |
 | 3. Member Management | 0/? | Not started | - |
 | 4. QR Check-In Flow | 0/? | Not started | - |
 | 5. Dashboard — Member Overview | 0/? | Not started | - |

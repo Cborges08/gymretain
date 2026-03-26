@@ -10,8 +10,8 @@
 - [ ] **AUTH-01**: Admin pode criar conta com email e senha
 - [ ] **AUTH-02**: Admin pode fazer login com email e senha
 - [ ] **AUTH-03**: Admin pode fazer logout
-- [ ] **AUTH-04**: Sessão persiste entre refreshes do browser
-- [ ] **AUTH-05**: Rotas do dashboard são protegidas por middleware (redireciona para login se não autenticado)
+- [x] **AUTH-04**: Sessão persiste entre refreshes do browser
+- [x] **AUTH-05**: Rotas do dashboard são protegidas por middleware (redireciona para login se não autenticado)
 - [ ] **AUTH-06**: Admin pode resetar senha via email
 
 ### Membros
@@ -102,8 +102,8 @@
 | AUTH-01 | Phase 1 | Pending |
 | AUTH-02 | Phase 1 | Pending |
 | AUTH-03 | Phase 1 | Pending |
-| AUTH-04 | Phase 1 | Pending |
-| AUTH-05 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Complete |
+| AUTH-05 | Phase 1 | Complete |
 | AUTH-06 | Phase 1 | Pending |
 | INFR-01 | Phase 1 | Complete |
 | INFR-02 | Phase 1 | Complete |
