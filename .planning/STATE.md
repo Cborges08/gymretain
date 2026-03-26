@@ -2,13 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
+current_plan: 02 (completed)
 status: unknown
-last_updated: "2026-03-26T10:47:36Z"
+stopped_at: Completed 01-03-PLAN.md (Supabase client factories and database types)
+last_updated: "2026-03-26T11:09:18.206Z"
 progress:
   total_phases: 9
   completed_phases: 0
   total_plans: 4
-  completed_plans: 1
+  completed_plans: 3
 ---
 
 # Project State
@@ -25,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 **Phase:** 01 — project-scaffold-database-foundation
 **Current Plan:** 02 (completed)
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-26T10:47:36Z
-**Stopped at:** Completed 01-02-PLAN.md (database schema migrations)
+**Last session:** 2026-03-26T11:09:18.204Z
+**Stopped at:** Completed 01-03-PLAN.md (Supabase client factories and database types)
 
 ## Decisions
 
@@ -35,6 +37,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - Phase 01: members.status uses two-state model (active/inactive) to simplify MVP
 - Phase 01: checkins_insert_public has no TO role restriction — enables anonymous QR check-in (D-12)
 - Phase 01: org_id RLS scoping uses JWT app_metadata — Phase 2 auth hook must populate this field
+- [Phase 01]: server.ts uses createServerClient from auth-helpers-nextjs v0.15, calling cookies() to resolve the store before passing to the client
 
 ## Performance Metrics
 
@@ -42,6 +45,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 |-------|------|--------------|-------|-------|
 | 01    | 01   | 254          | 3     | 13    |
 | 01    | 02   | 111          | 3     | 3     |
+| Phase 01 P03 | 190 | 3 tasks | 6 files |
 
 ## Milestone Progress
 
