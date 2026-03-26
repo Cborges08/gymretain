@@ -30,6 +30,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 
 ## Decisions
 
+- Phase 01 (Plan 01): Manual scaffold used instead of create-next-app — uppercase dir name "GymMVP" blocked npx
+- Phase 01 (Plan 01): vitest environment set to 'node' — tests target server-side Supabase clients
 - Phase 01: members.status uses two-state model (active/inactive) to simplify MVP
 - Phase 01: checkins_insert_public has no TO role restriction — enables anonymous QR check-in (D-12)
 - Phase 01: org_id RLS scoping uses JWT app_metadata — Phase 2 auth hook must populate this field
@@ -38,6 +40,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 
 | Phase | Plan | Duration (s) | Tasks | Files |
 |-------|------|--------------|-------|-------|
+| 01    | 01   | 254          | 3     | 13    |
 | 01    | 02   | 111          | 3     | 3     |
 
 ## Milestone Progress

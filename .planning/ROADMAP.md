@@ -55,7 +55,7 @@
 **Plans**: 4 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Next.js 14 scaffold, Vitest setup, .env.example (Wave 1)
+- [x] 01-01-PLAN.md — Next.js 14 scaffold, Vitest setup, .env.example (Wave 1)
 - [x] 01-02-PLAN.md — SQL migrations: schema, RLS policies, indexes (Wave 1)
 - [ ] 01-03-PLAN.md — Supabase client factories, TypeScript types, vercel.json (Wave 2)
 - [ ] 01-04-PLAN.md — Human checkpoint: apply migrations, configure Vercel (Wave 3)

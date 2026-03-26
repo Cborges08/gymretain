@@ -53,8 +53,8 @@
 
 ### Infraestrutura
 
-- [ ] **INFR-01**: Deploy automático no Vercel a partir de push na branch main
-- [ ] **INFR-02**: Variáveis de ambiente configuradas no Vercel (Supabase keys, Resend key, cron secret)
+- [x] **INFR-01**: Deploy automático no Vercel a partir de push na branch main
+- [x] **INFR-02**: Variáveis de ambiente configuradas no Vercel (Supabase keys, Resend key, cron secret)
 - [x] **INFR-03**: RLS policies ativas em todas as tabelas — queries sem auth retornam vazio
 - [x] **INFR-04**: Indexes em `members(last_checked_in)` e `checkins(member_id, checked_in_at)`
 
@@ -105,8 +105,8 @@
 | AUTH-04 | Phase 1 | Pending |
 | AUTH-05 | Phase 1 | Pending |
 | AUTH-06 | Phase 1 | Pending |
-| INFR-01 | Phase 1 | Pending |
-| INFR-02 | Phase 1 | Pending |
+| INFR-01 | Phase 1 | Complete |
+| INFR-02 | Phase 1 | Complete |
 | INFR-03 | Phase 1 | Complete |
 | INFR-04 | Phase 1 | Complete |
 | MEMB-01 | Phase 2 | Pending |
