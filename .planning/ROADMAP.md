@@ -56,7 +56,7 @@
 
 Plans:
 - [ ] 01-01-PLAN.md — Next.js 14 scaffold, Vitest setup, .env.example (Wave 1)
-- [ ] 01-02-PLAN.md — SQL migrations: schema, RLS policies, indexes (Wave 1)
+- [x] 01-02-PLAN.md — SQL migrations: schema, RLS policies, indexes (Wave 1)
 - [ ] 01-03-PLAN.md — Supabase client factories, TypeScript types, vercel.json (Wave 2)
 - [ ] 01-04-PLAN.md — Human checkpoint: apply migrations, configure Vercel (Wave 3)
 
@@ -323,7 +323,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Scaffold & Database Foundation | 0/? | Not started | - |
+| 1. Project Scaffold & Database Foundation | 1/4 | In Progress|  |
 | 2. Admin Authentication | 0/? | Not started | - |
 | 3. Member Management | 0/? | Not started | - |
 | 4. QR Check-In Flow | 0/? | Not started | - |
