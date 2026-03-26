@@ -12,7 +12,9 @@ O dono da academia sabe, sem esforço, quais alunos estão sumindo — e recebe 
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Next.js 14 App Router + TypeScript + Tailwind + Supabase + Vercel stack — live and deployed (Validated in Phase 01: project-scaffold-database-foundation)
+- [x] Supabase free tier sufficient for schema + RLS + indexes (Validated in Phase 01)
+- [x] Vercel hobby tier auto-deploys on push to main (Validated in Phase 01)
 
 ### Active
 
@@ -77,4 +79,4 @@ Este documento evolui a cada transição de fase e milestone.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-25 after initialization*
+*Last updated: 2026-03-26 — Phase 01 complete (scaffold + DB live)*
