@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 current_plan: 1
 status: Executing Phase 02
-stopped_at: Completed 02-02-PLAN.md (Route protection middleware)
-last_updated: "2026-03-26T15:20:51.837Z"
+stopped_at: "Completed 02-01-PLAN.md (Auth server actions: signup, login, logout, password reset)"
+last_updated: "2026-03-26T15:32:16.245Z"
 progress:
   total_phases: 9
   completed_phases: 1
   total_plans: 8
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Project State
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 **Phase:** 2
 **Current Plan:** 1
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-26T15:20:51.835Z
-**Stopped at:** Completed 02-02-PLAN.md (Route protection middleware)
+**Last session:** 2026-03-26T15:32:16.242Z
+**Stopped at:** Completed 02-01-PLAN.md (Auth server actions: signup, login, logout, password reset)
 
 ## Decisions
 
@@ -40,6 +40,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 01]: server.ts uses createServerClient from auth-helpers-nextjs v0.15, calling cookies() to resolve the store before passing to the client
 - [Phase 02]: Phase 02 Plan 02: createServerClient used in middleware directly (not wrapper) — next/headers unavailable in Edge Runtime
 - [Phase 02]: Phase 02 Plan 02: getAll/setAll cookie pattern used — deprecated get/set/remove pattern avoided
+- [Phase 02]: database.ts Row types use type (not interface) to satisfy @supabase/supabase-js v2.100+ GenericTable constraint (Record<string, unknown> extension requirement)
+- [Phase 02]: signupAction redirects to /auth/login after signup (not /dashboard) — Supabase requires email confirmation before user can log in
 
 ## Performance Metrics
 
@@ -49,6 +51,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | 01    | 02   | 111          | 3     | 3     |
 | Phase 01 P03 | 190 | 3 tasks | 6 files |
 | Phase 02 P02 | 149 | 1 tasks | 2 files |
+| Phase 02 P01 | 826 | 3 tasks | 8 files |
 
 ## Milestone Progress
 
