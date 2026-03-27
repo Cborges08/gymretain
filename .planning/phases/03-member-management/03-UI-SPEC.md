@@ -52,7 +52,7 @@ Exceptions: None
 | Role | Size | Weight | Line Height |
 |------|------|--------|-------------|
 | Body | 14px | 400 (normal) | 1.5 |
-| Label | 12px | 500 (medium) | 1.4 |
+| Label | 12px | 600 (semibold) | 1.4 |
 | Heading (page) | 24px | 600 (semibold) | 1.3 |
 | Heading (subhead) | 18px | 600 (semibold) | 1.3 |
 
@@ -61,12 +61,12 @@ Exceptions: None
 **Applied to Phase 3 components:**
 - Page title: 24px semibold (Heading role)
 - Section headings: 18px semibold (Heading subhead role)
-- Form labels: 12px medium (Label role)
-- Table headers: 12px medium (Label role)
+- Form labels: 12px semibold (Label role)
+- Table headers: 12px semibold (Label role)
 - Body text: 14px normal (Body role)
 - Table cells: 14px normal (Body role)
-- Badge text: 12px medium (Label role)
-- Status badge: 12px medium (Label role)
+- Badge text: 12px semibold (Label role)
+- Status badge: 12px semibold (Label role)
 
 ---
 
@@ -173,7 +173,7 @@ Exceptions: None
 - Table padding: 16px (md)
 
 **Table styling:**
-- Header row: `bg-gray-50`, `border-b border-gray-200`, text `gray-900` 12px medium
+- Header row: `bg-gray-50`, `border-b border-gray-200`, text `gray-900` 12px semibold
 - Data rows: white background, `border-b border-gray-200`, text `gray-900` 14px normal
 - Hover rows: `bg-gray-50`
 - Row height: ~48px (12px label + 28px padding)
@@ -266,7 +266,7 @@ Exceptions: None
 **Link styling (unchanged from Phase 2):**
 - Active: `bg-emerald-50 text-emerald-600`
 - Inactive: `text-gray-600 hover:bg-gray-50 hover:text-gray-900`
-- Font: 14px medium
+- Font: 14px semibold
 - Padding: px-4 py-2 (16px x 8px)
 - Rounded: `rounded-lg`
 
