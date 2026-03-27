@@ -16,9 +16,11 @@ O dono da academia sabe, sem esforço, quais alunos estão sumindo — e recebe 
 - [x] Supabase free tier sufficient for schema + RLS + indexes (Validated in Phase 01)
 - [x] Vercel hobby tier auto-deploys on push to main (Validated in Phase 01)
 
-### Active
+### Validated
 
-- [ ] Admin da academia faz login seguro no painel (email/senha via Supabase Auth)
+- [x] Admin da academia faz login seguro no painel (email/senha via Supabase Auth) — Validated in Phase 02: admin-authentication
+
+### Active
 - [ ] Admin cadastra alunos com nome, email e QR code único gerado automaticamente
 - [ ] Aluno escaneia QR code e registra check-in sem precisar de login ou app
 - [ ] Admin visualiza histórico de check-ins por aluno e frequência geral
@@ -79,4 +81,4 @@ Este documento evolui a cada transição de fase e milestone.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-26 — Phase 01 complete (scaffold + DB live)*
+*Last updated: 2026-03-27 — Phase 02 complete (admin authentication live)*
