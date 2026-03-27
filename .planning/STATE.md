@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 1
+current_plan: 3
 status: Executing Phase 02
-stopped_at: "Completed 02-01-PLAN.md (Auth server actions: signup, login, logout, password reset)"
-last_updated: "2026-03-26T15:32:16.245Z"
+stopped_at: "Completed 02-03-PLAN.md (Auth UI pages: layout, signup, login, reset-password)"
+last_updated: "2026-03-26T08:03:00.000Z"
 progress:
   total_phases: 9
   completed_phases: 1
   total_plans: 8
-  completed_plans: 6
+  completed_plans: 7
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 ## Current Status
 
 **Phase:** 2
-**Current Plan:** 1
+**Current Plan:** 3
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-26T15:32:16.242Z
-**Stopped at:** Completed 02-01-PLAN.md (Auth server actions: signup, login, logout, password reset)
+**Last session:** 2026-03-26T08:03:00.000Z
+**Stopped at:** Completed 02-03-PLAN.md (Auth UI pages: layout, signup, login, reset-password)
 
 ## Decisions
 
@@ -42,6 +42,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 02]: Phase 02 Plan 02: getAll/setAll cookie pattern used — deprecated get/set/remove pattern avoided
 - [Phase 02]: database.ts Row types use type (not interface) to satisfy @supabase/supabase-js v2.100+ GenericTable constraint (Record<string, unknown> extension requirement)
 - [Phase 02]: signupAction redirects to /auth/login after signup (not /dashboard) — Supabase requires email confirmation before user can log in
+- [Phase 02 Plan 03]: reset-password page uses Suspense wrapper for useSearchParams — required by Next.js 14 App Router
+- [Phase 02 Plan 03]: reset-password single route handles both request and confirmation states via token_hash URL param (D-14)
 
 ## Performance Metrics
 
@@ -52,6 +54,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | Phase 01 P03 | 190 | 3 tasks | 6 files |
 | Phase 02 P02 | 149 | 1 tasks | 2 files |
 | Phase 02 P01 | 826 | 3 tasks | 8 files |
+| 02    | 03   | 149          | 2     | 4     |
 
 ## Milestone Progress
 
