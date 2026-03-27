@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
+current_plan: 4
 status: Executing Phase 02
-stopped_at: "Completed 02-03-PLAN.md (Auth UI pages: layout, signup, login, reset-password)"
-last_updated: "2026-03-26T08:03:00.000Z"
+stopped_at: "Completed 02-04-PLAN.md (Dashboard Shell & Root Redirect) — all 4 plans done"
+last_updated: "2026-03-27T00:00:00.000Z"
 progress:
   total_phases: 9
   completed_phases: 1
   total_plans: 8
-  completed_plans: 7
+  completed_plans: 8
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 ## Current Status
 
 **Phase:** 2
-**Current Plan:** 3
+**Current Plan:** 4 (completed)
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-26T08:03:00.000Z
-**Stopped at:** Completed 02-03-PLAN.md (Auth UI pages: layout, signup, login, reset-password)
+**Last session:** 2026-03-27T00:00:00.000Z
+**Stopped at:** All 4 plans complete — pending phase verification
 
 ## Decisions
 
@@ -44,6 +44,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 02]: signupAction redirects to /auth/login after signup (not /dashboard) — Supabase requires email confirmation before user can log in
 - [Phase 02 Plan 03]: reset-password page uses Suspense wrapper for useSearchParams — required by Next.js 14 App Router
 - [Phase 02 Plan 03]: reset-password single route handles both request and confirmation states via token_hash URL param (D-14)
+- Phase 02 (Plan 04): SidebarNav extracted to Client Component for usePathname() — layout.tsx stays Server Component
+- Phase 02 (Plan 04): logout.ts copied from plan 02-01 parallel wave worktree (dependency not yet merged)
 
 ## Performance Metrics
 
@@ -55,6 +57,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | Phase 02 P02 | 149 | 1 tasks | 2 files |
 | Phase 02 P01 | 826 | 3 tasks | 8 files |
 | 02    | 03   | 149          | 2     | 4     |
+| 02    | 04   | 420          | 3     | 5     |
 
 ## Milestone Progress
 
