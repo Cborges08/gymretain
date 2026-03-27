@@ -16,8 +16,8 @@
 
 ### Membros
 
-- [ ] **MEMB-01**: Admin pode cadastrar aluno com nome, email e telefone (opcional)
-- [ ] **MEMB-02**: QR code único é gerado automaticamente ao cadastrar aluno
+- [ ] **MEMB-01**: Admin pode cadastrar aluno com nome, email, CPF e telefone (opcional)
+- [ ] **MEMB-02**: QR code único é gerado para a academia (não por aluno); alunos identificam-se por CPF na página de check-in após escanear o QR da academia
 - [ ] **MEMB-03**: Admin pode visualizar lista de todos os alunos com status de frequência
 - [ ] **MEMB-04**: Admin pode visualizar perfil individual do aluno com histórico de check-ins
 - [ ] **MEMB-05**: Admin pode editar dados do aluno
@@ -26,7 +26,7 @@
 
 ### Check-in
 
-- [ ] **CHKN-01**: Aluno escaneia QR code e acessa página de check-in sem login
+- [ ] **CHKN-01**: Aluno escaneia o QR code da academia, acessa página de check-in sem login, digita CPF e confirma presença
 - [ ] **CHKN-02**: Página de check-in confirma check-in com nome do aluno e horário
 - [ ] **CHKN-03**: Check-in duplicado na mesma sessão (dentro de 4h) é rejeitado com mensagem amigável
 - [ ] **CHKN-04**: Check-in registra timestamp, IP e user-agent para auditoria
@@ -109,19 +109,19 @@
 | INFR-02 | Phase 1 | Complete |
 | INFR-03 | Phase 1 | Complete |
 | INFR-04 | Phase 1 | Complete |
-| MEMB-01 | Phase 2 | Pending |
-| MEMB-02 | Phase 2 | Pending |
-| MEMB-03 | Phase 2 | Pending |
-| MEMB-04 | Phase 2 | Pending |
-| MEMB-05 | Phase 2 | Pending |
-| MEMB-06 | Phase 2 | Pending |
-| MEMB-07 | Phase 2 | Pending |
-| CHKN-01 | Phase 3 | Pending |
-| CHKN-02 | Phase 3 | Pending |
-| CHKN-03 | Phase 3 | Pending |
-| CHKN-04 | Phase 3 | Pending |
-| CHKN-05 | Phase 3 | Pending |
-| CHKN-06 | Phase 3 | Pending |
+| MEMB-01 | Phase 3 | Pending |
+| MEMB-02 | Phase 3 | Pending |
+| MEMB-03 | Phase 3 | Pending |
+| MEMB-04 | Phase 3 | Pending |
+| MEMB-05 | Phase 3 | Pending |
+| MEMB-06 | Phase 3 | Pending |
+| MEMB-07 | Phase 3 | Pending |
+| CHKN-01 | Phase 4 | Pending |
+| CHKN-02 | Phase 4 | Pending |
+| CHKN-03 | Phase 4 | Pending |
+| CHKN-04 | Phase 4 | Pending |
+| CHKN-05 | Phase 4 | Pending |
+| CHKN-06 | Phase 4 | Pending |
 | DASH-01 | Phase 4 | Pending |
 | DASH-02 | Phase 4 | Pending |
 | DASH-03 | Phase 4 | Pending |

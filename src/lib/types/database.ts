@@ -1,13 +1,17 @@
 // src/lib/types/database.ts
-// TypeScript row types matching /supabase/migrations/001-init-schema.sql
+// TypeScript row types matching /supabase/migrations/ (001 + 004)
 // These are the canonical types used across all plans.
 // NOTE: Row types use `type` (not `interface`) to satisfy GenericTable constraint
 // from @supabase/supabase-js v2.100+ which requires Row extends Record<string, unknown>.
+//
+// Migration 004: Organization gains qr_code_hash (gym QR).
+//                Member gains cpf; loses qr_code_hash + qr_code_generated_at.
 
 export type Organization = {
   id: string;
   name: string;
   admin_email: string;
+  qr_code_hash: string;   // Gym-level QR code (migration 004). Posted at entrance for member check-in.
   created_at: string;
   updated_at: string;
 }
@@ -17,9 +21,8 @@ export type Member = {
   org_id: string;
   name: string;
   email: string;
+  cpf: string | null;     // Brazilian taxpayer ID. Required for check-in. Nullable at DB level for migration safety.
   phone: string | null;
-  qr_code_hash: string;
-  qr_code_generated_at: string;
   last_checked_in: string | null;  // NULL until first check-in
   status: 'active' | 'inactive';
   external_id: string | null;      // Reserved for Fácil integration (MEMB-07)
@@ -64,7 +67,8 @@ export interface Database {
       };
       members: {
         Row: Member;
-        Insert: Omit<Member, 'id' | 'created_at' | 'updated_at' | 'qr_code_generated_at'>;
+        // cpf required on Insert — members without CPF cannot check in
+        Insert: Omit<Member, 'id' | 'created_at' | 'updated_at'> & { cpf: string };
         Update: Partial<Omit<Member, 'id' | 'created_at' | 'org_id'>>;
         Relationships: [
           {

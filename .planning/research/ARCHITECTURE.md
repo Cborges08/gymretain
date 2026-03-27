@@ -13,8 +13,8 @@
 │  Admin Dashboard        │    Public Check-in UI                  │
 │  (Protected routes)     │    (Stateless, no auth)                │
 │                         │                                         │
-│  /dashboard/...         │    /checkin/[qr_code]                  │
-│  (Server + Client)      │    (Server Component)                  │
+│  /dashboard/...         │    /checkin/[gym_qr_hash]              │
+│  (Server + Client)      │    (Server Component, CPF form)        │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -68,9 +68,9 @@
 | Component | Responsibility | Communicates With | Notes |
 |-----------|---------------|-------------------|-------|
 | **Admin Dashboard** | Display member list, check-in history, alert status, contact tracking | /api/admin/*, Supabase RT subscription | Server + Client components (RSC + interactive UI) |
-| **Public Check-in UI** | Scan QR, submit check-in, confirm success | /api/checkin | Pure server component, no auth required |
+| **Public Check-in UI** | Scan gym QR → CPF input form → confirm success | /api/checkin | Server component, no auth. Route: /checkin/[gym_qr_hash] |
 | **Auth API** | Sign up, sign in, sign out, password reset | Supabase Auth | Protected by PKCE, session tokens in secure cookies |
-| **Check-in API** | Validate QR code, record check-in, update last_seen, flag for alert | Database layer | Validates QR format, creates/updates checkin record, idempotent |
+| **Check-in API** | Validate gym QR, lookup member by CPF (service role), record check-in, update last_checked_in | Database layer | Uses service role client — RLS blocks anon member SELECT. Validates 4h duplicate window. |
 | **Churn Detection Service** | Query members by threshold, generate alert records, send emails | Database + Resend API | Cron job (nightly), marks alerts as unhandled, respects contact_marked_at |
 | **Admin API Routes** | Fetch members, check-in stats, mark contact, fetch alerts | RLS-protected Supabase | All queries scoped to org_id via RLS policy |
 | **Database (Supabase)** | Single source of truth for members, check-ins, alerts, contact status | All layers via PostgREST | PostgreSQL with RLS, real-time enabled on checkins table |
@@ -78,24 +78,33 @@
 ## Data Flow
 
 ### Flow 1: Member Check-In (No Auth)
+
+> **UPDATED (Phase 3 design pivot):** Check-in is no longer per-member QR.
+> Gym has one QR code; members identify themselves with CPF.
+> See: `.planning/phases/03-member-management/03-CONTEXT.md`
+
 ```
-1. Member scans QR code → /checkin/[qr_code_hash]
+1. Member scans gym QR code → /checkin/[gym_qr_hash]
 2. GET request hits server component
-3. Component queries DB: SELECT member WHERE qr_code = $1
-4. Display "Check-in confirmed" or error
-5. On confirm click → POST /api/checkin { member_id, timestamp }
-6. API validates member exists, creates checkin record
-7. API updates members.last_checked_in = NOW()
-8. API checks: days_since_last_checkin < 7 → no alert needed
-9. Response: JSON { success: true, message: "Check-in recorded" }
-10. UI redirects to success page
+3. Component looks up org by gym_qr_hash (service role client — bypasses RLS)
+4. Displays CPF input form with gym name
+5. Member submits CPF → POST /api/checkin { cpf, org_qr_hash }
+6. API uses service role client to lookup: SELECT member WHERE org_id = $1 AND cpf = $2
+7. If member not found or inactive → return error with friendly message
+8. API validates duplicate check-in window (4h): SELECT checkins WHERE member_id AND checked_in_at > NOW()-4h
+9. API creates checkin record: { member_id, org_id, checked_in_at, ip_address, user_agent }
+10. API updates members.last_checked_in = NOW()
+11. Response: JSON { success: true, member_name, message }
+12. UI shows success screen with member name and timestamp
 ```
 
 **Data Written:**
-- `checkins` table: { member_id, checked_in_at, org_id }
+- `checkins` table: { member_id, checked_in_at, org_id, ip_address, user_agent }
 - `members.last_checked_in`: NOW()
 
-**No Authentication:** QR code is public but unique per member (UUID-based hash). Single-tenant context means all members belong to same gym.
+**No Authentication:** Gym QR is public and unique per gym (UUID-based hash in organizations table).
+Member lookup uses **service role client** server-side — required because members RLS blocks anon SELECT.
+CPF validation (11-digit checksum) done at app layer before DB lookup.
 
 ---
 
