@@ -12,7 +12,7 @@
 
 - [ ] **Phase 1: Project Scaffold & Database Foundation** - Next.js app initialized, Supabase schema live, RLS policies enforced, deploy pipeline running
 - [ ] **Phase 2: Admin Authentication** - Admin can register, login, logout, reset password; all dashboard routes protected by middleware
-- [ ] **Phase 3: Member Management** - Admin can create, list, edit, deactivate members; QR codes auto-generated and displayable
+- [x] **Phase 3: Member Management** - Admin can create, list, edit, deactivate members; QR codes auto-generated and displayable (completed 2026-03-30)
 - [ ] **Phase 4: QR Check-In Flow** - Member scans QR code and registers check-in without login; duplicates blocked; audit trail recorded
 - [ ] **Phase 5: Dashboard — Member Overview** - Admin sees all members sorted by inactivity, with risk counts and paginated check-in history
 - [ ] **Phase 6: Dashboard — Actions & Churn Fallback** - Admin can mark member as contacted; manual churn check button available as cron fallback
@@ -130,7 +130,7 @@ Plans:
 - [x] 03-01-PLAN.md � Server Actions: createMember, updateMember, deactivate/reactivate; CPF utils (Wave 1)
 - [x] 03-02-PLAN.md � Member list page /dashboard/members + SidebarNav QR Code link (Wave 1)
 - [x] 03-03-PLAN.md � Member create form page /dashboard/members/new (Wave 2)
-- [ ] 03-04-PLAN.md � Member profile page + edit form /dashboard/members/[id] (Wave 2)
+- [x] 03-04-PLAN.md � Member profile page + edit form /dashboard/members/[id] (Wave 2)
 - [x] 03-05-PLAN.md � Gym QR code display page /dashboard/qr-code (Wave 1)
 
 ---
@@ -333,7 +333,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold & Database Foundation | 1/4 | In Progress|  |
 | 2. Admin Authentication | 4/4 | In Progress|  |
-| 3. Member Management | 3/5 | In Progress|  |
+| 3. Member Management | 5/5 | Complete   | 2026-03-30 |
 | 4. QR Check-In Flow | 0/? | Not started | - |
 | 5. Dashboard — Member Overview | 0/? | Not started | - |
 | 6. Dashboard — Actions & Churn Fallback | 0/? | Not started | - |

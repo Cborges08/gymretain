@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 current_plan: 1
 status: Executing Phase 03
-stopped_at: Completed 03-03-PLAN.md (Member create form page at /dashboard/members/new)
-last_updated: "2026-03-30T11:28:38.768Z"
+stopped_at: Completed 03-04-PLAN.md (Member profile and edit pages)
+last_updated: "2026-03-30T11:30:31.191Z"
 progress:
   total_phases: 9
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 13
-  completed_plans: 12
+  completed_plans: 13
 ---
 
 # Project State
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 **Phase:** 3
 **Current Plan:** 1
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-30T11:28:38.765Z
-**Stopped at:** Completed 03-03-PLAN.md (Member create form page at /dashboard/members/new)
+**Last session:** 2026-03-30T11:30:31.188Z
+**Stopped at:** Completed 03-04-PLAN.md (Member profile and edit pages)
 
 ## Decisions
 
@@ -54,6 +54,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 03]: stripCpf applied via Zod transform before pipe to length(11) — DB always stores raw 11 digits
 - [Phase 03]: Error displayed as single banner above form actions (not per-field) — createMemberAction returns one error string
 - [Phase 03]: noValidate on form defers validation to server action; CPF maxLength=14 accommodates formatted input
+- [Phase 03]: DeactivateButton and ReactivateButton extracted as Client Components — useFormState required for 2-arg server action signatures (TS2322 fix)
+- [Phase 03]: Edit form cancel returns to profile page /dashboard/members/{id}, not list — correct UX for edit cancel
 
 ## Performance Metrics
 
@@ -70,6 +72,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | Phase 03 P05 | 82 | 1 tasks | 2 files |
 | Phase 03 P01 | 175 | 3 tasks | 6 files |
 | Phase 03 P03 | 120 | 1 tasks | 1 files |
+| Phase 03 P04 | 1080 | 2 tasks | 5 files |
 
 ## Milestone Progress
 
