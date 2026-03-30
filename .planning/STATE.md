@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: Not started
-status: Ready to plan
-stopped_at: All 4 plans complete — pending phase verification
-last_updated: "2026-03-27T11:03:19.815Z"
+current_plan: 1
+status: Executing Phase 03
+stopped_at: Completed 03-02-PLAN.md (Member list page and SidebarNav QR link)
+last_updated: "2026-03-30T11:21:06.263Z"
 progress:
   total_phases: 9
   completed_phases: 2
-  total_plans: 8
-  completed_plans: 8
+  total_plans: 13
+  completed_plans: 9
 ---
 
 # Project State
@@ -20,15 +20,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** O dono da academia sabe, sem esforço, quais alunos estão sumindo — e recebe um empurrão para agir antes de perdê-los.
-**Current focus:** Phase 02 — admin-authentication
+**Current focus:** Phase 03 — member-management
 
 ## Current Status
 
 **Phase:** 3
-**Current Plan:** Not started
+**Current Plan:** 1
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-27T00:00:00.000Z
-**Stopped at:** All 4 plans complete — pending phase verification
+**Last session:** 2026-03-30T11:21:06.260Z
+**Stopped at:** Completed 03-02-PLAN.md (Member list page and SidebarNav QR link)
 
 ## Decisions
 
@@ -46,6 +46,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 02 Plan 03]: reset-password single route handles both request and confirmation states via token_hash URL param (D-14)
 - Phase 02 (Plan 04): SidebarNav extracted to Client Component for usePathname() — layout.tsx stays Server Component
 - Phase 02 (Plan 04): logout.ts copied from plan 02-01 parallel wave worktree (dependency not yet merged)
+- [Phase 03]: Server Component reads org_id from JWT app_metadata for member list query
+- [Phase 03]: nullsFirst on last_checked_in ensures never-checked-in members appear first
 
 ## Performance Metrics
 
@@ -58,6 +60,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | Phase 02 P01 | 826 | 3 tasks | 8 files |
 | 02    | 03   | 149          | 2     | 4     |
 | 02    | 04   | 420          | 3     | 5     |
+| Phase 03 P02 | 75 | 2 tasks | 2 files |
 
 ## Milestone Progress
 

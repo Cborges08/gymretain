@@ -18,7 +18,7 @@
 
 - [ ] **MEMB-01**: Admin pode cadastrar aluno com nome, email, CPF e telefone (opcional)
 - [ ] **MEMB-02**: QR code único é gerado para a academia (não por aluno); alunos identificam-se por CPF na página de check-in após escanear o QR da academia
-- [ ] **MEMB-03**: Admin pode visualizar lista de todos os alunos com status de frequência
+- [x] **MEMB-03**: Admin pode visualizar lista de todos os alunos com status de frequência
 - [ ] **MEMB-04**: Admin pode visualizar perfil individual do aluno com histórico de check-ins
 - [ ] **MEMB-05**: Admin pode editar dados do aluno
 - [ ] **MEMB-06**: Admin pode desativar/reativar aluno (não deleta dados)
@@ -111,7 +111,7 @@
 | INFR-04 | Phase 1 | Complete |
 | MEMB-01 | Phase 3 | Pending |
 | MEMB-02 | Phase 3 | Pending |
-| MEMB-03 | Phase 3 | Pending |
+| MEMB-03 | Phase 3 | Complete |
 | MEMB-04 | Phase 3 | Pending |
 | MEMB-05 | Phase 3 | Pending |
 | MEMB-06 | Phase 3 | Pending |
