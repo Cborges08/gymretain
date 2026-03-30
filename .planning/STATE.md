@@ -4,8 +4,8 @@ milestone: v1.0
 milestone_name: milestone
 current_plan: 1
 status: Executing Phase 03
-stopped_at: Completed 03-05-PLAN.md (Gym QR code page at /dashboard/qr-code)
-last_updated: "2026-03-30T11:22:54.462Z"
+stopped_at: Completed 03-01-PLAN.md (Member Server Actions and CPF utilities)
+last_updated: "2026-03-30T11:23:17.063Z"
 progress:
   total_phases: 9
   completed_phases: 2
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 **Phase:** 3
 **Current Plan:** 1
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-30T11:22:32.249Z
-**Stopped at:** Completed 03-05-PLAN.md (Gym QR code page at /dashboard/qr-code)
+**Last session:** 2026-03-30T11:23:17.061Z
+**Stopped at:** Completed 03-01-PLAN.md (Member Server Actions and CPF utilities)
 
 ## Decisions
 
@@ -49,6 +49,9 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 03]: Server Component reads org_id from JWT app_metadata for member list query
 - [Phase 03]: nullsFirst on last_checked_in ensures never-checked-in members appear first
 - [Phase 03]: QR code page split into two files (page.tsx + QRCodeDisplay.tsx) because 'use client' cannot appear mid-file in Next.js
+- [Phase 03]: CPF validation strips non-digits before length check (supports formatted input like 123.456.789-01)
+- [Phase 03]: Unique violation detection uses error.message string match for email/cpf constraint names
+- [Phase 03]: stripCpf applied via Zod transform before pipe to length(11) — DB always stores raw 11 digits
 
 ## Performance Metrics
 
