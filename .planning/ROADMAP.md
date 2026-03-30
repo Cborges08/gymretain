@@ -122,8 +122,14 @@ Plans:
   - `qrcode.react` used for display; `qrcode` (Node) used for server-side generation
   - Check `org_id` is always set from JWT claims when inserting â€” never trust client-provided org_id
 
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 5 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Server Actions: createMember, updateMember, deactivate/reactivate; CPF utils (Wave 1)
+- [ ] 03-02-PLAN.md — Member list page /dashboard/members + SidebarNav QR Code link (Wave 1)
+- [ ] 03-03-PLAN.md — Member create form page /dashboard/members/new (Wave 2)
+- [ ] 03-04-PLAN.md — Member profile page + edit form /dashboard/members/[id] (Wave 2)
+- [ ] 03-05-PLAN.md — Gym QR code display page /dashboard/qr-code (Wave 1)
 
 ---
 
