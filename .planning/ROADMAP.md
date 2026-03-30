@@ -103,33 +103,35 @@ Plans:
 **Requirements**: MEMB-01, MEMB-02, MEMB-03, MEMB-04, MEMB-05, MEMB-06, MEMB-07
 
 **Success Criteria** (what must be TRUE):
-  1. Admin fills a form with name, email, and optional phone number — member is saved and a unique QR code is generated automatically
-  2. A QR code image is visible on the member's profile page and can be printed or saved
+  1. Admin fills a form with name, email, CPF (required), and optional phone number — member is saved to the DB under their org
+  2. The gym's shared QR code is visible and printable at `/dashboard/qr-code` — members scan it and identify via CPF at check-in (D-01)
   3. Admin sees a list of all members showing name, email, and last check-in status
-  4. Admin can click a member to view their full profile and check-in history
-  5. Admin can edit name, email, or phone number of any member
+  4. Admin can click a member to view their full profile (CPF masked) and a check-in history placeholder (Phase 5)
+  5. Admin can edit name, email, CPF, or phone number of any member
   6. Admin can deactivate a member — they disappear from active lists but their data is not deleted; reactivating them restores full history
   7. The `members` table has an `external_id` column (nullable) reserved for future Fácil integration
 
 **UAT Criteria**:
-  - Create a member → navigate to their profile → QR code image is displayed and scannable by a phone camera
+  - Create a member → navigate to their profile → member data (masked CPF) is displayed correctly
+  - Navigate to `/dashboard/qr-code` → gym QR code is displayed and scannable by a phone camera
   - Create two members with the same email — second one is rejected with a clear error
+  - Create two members with the same CPF — second one is rejected with a clear error
   - Deactivate a member → they no longer appear in the active member list → reactivate → they reappear with history intact
   - Inspect `members` table in Supabase — `external_id` column exists and is nullable
 
 **Pitfall Guards**:
-  - QR code uses `crypto.randomUUID()` server-side; `UNIQUE` constraint enforced at DB level (Pitfall 9)
-  - `qrcode.react` used for display; `qrcode` (Node) used for server-side generation
-  - Check `org_id` is always set from JWT claims when inserting — never trust client-provided org_id
+  - Check-in uses gym QR + CPF identification — no per-member QR codes (D-01)
+  - `qrcode.react` used for gym QR display at `/dashboard/qr-code`
+  - Check `org_id` is always set from JWT app_metadata when inserting — never trust client-provided org_id
 
 **Plans**: 5 plans
 
 Plans:
-- [ ] 03-01-PLAN.md � Server Actions: createMember, updateMember, deactivate/reactivate; CPF utils (Wave 1)
-- [ ] 03-02-PLAN.md � Member list page /dashboard/members + SidebarNav QR Code link (Wave 1)
-- [ ] 03-03-PLAN.md � Member create form page /dashboard/members/new (Wave 2)
-- [ ] 03-04-PLAN.md � Member profile page + edit form /dashboard/members/[id] (Wave 2)
-- [ ] 03-05-PLAN.md � Gym QR code display page /dashboard/qr-code (Wave 1)
+- [ ] 03-01-PLAN.md � Server Actions: createMember, updateMember, deactivate/reactivate; CPF utils (Wave 1)
+- [ ] 03-02-PLAN.md � Member list page /dashboard/members + SidebarNav QR Code link (Wave 1)
+- [ ] 03-03-PLAN.md � Member create form page /dashboard/members/new (Wave 2)
+- [ ] 03-04-PLAN.md � Member profile page + edit form /dashboard/members/[id] (Wave 2)
+- [ ] 03-05-PLAN.md � Gym QR code display page /dashboard/qr-code (Wave 1)
 
 ---
 
