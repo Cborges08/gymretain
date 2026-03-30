@@ -20,8 +20,12 @@ O dono da academia sabe, sem esforço, quais alunos estão sumindo — e recebe 
 
 - [x] Admin da academia faz login seguro no painel (email/senha via Supabase Auth) — Validated in Phase 02: admin-authentication
 
+### Validated
+
+- [x] Admin pode cadastrar, editar, desativar/reativar alunos com validação de CPF e email duplicado (pt-BR) — Validated in Phase 03: member-management
+- [x] Admin pode visualizar lista de alunos ativos, perfil individual com CPF mascarado, e exibir/imprimir QR Code da academia — Validated in Phase 03: member-management
+
 ### Active
-- [ ] Admin cadastra alunos com nome, email e QR code único gerado automaticamente
 - [ ] Aluno escaneia QR code e registra check-in sem precisar de login ou app
 - [ ] Admin visualiza histórico de check-ins por aluno e frequência geral
 - [ ] Sistema envia email automático ao admin quando aluno fica 7+ dias sem check-in
@@ -81,4 +85,4 @@ Este documento evolui a cada transição de fase e milestone.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-27 — Phase 02 complete (admin authentication live)*
+*Last updated: 2026-03-30 — Phase 03 complete (member management live — CRUD, CPF masking, gym QR code page)*
