@@ -1,5 +1,6 @@
 'use client'
 
+import { useFormState } from 'react-dom'
 import { deactivateMemberAction } from '@/lib/actions/members'
 
 interface DeactivateButtonProps {
@@ -7,9 +8,11 @@ interface DeactivateButtonProps {
 }
 
 export function DeactivateButton({ memberId }: DeactivateButtonProps) {
+  const [, formAction] = useFormState(deactivateMemberAction, null)
+
   return (
     <form
-      action={deactivateMemberAction}
+      action={formAction}
       onSubmit={(e) => {
         if (
           !confirm(

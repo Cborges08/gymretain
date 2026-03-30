@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { createServerClient } from '@/lib/supabase/server'
-import { deactivateMemberAction } from '@/lib/actions/members'
 import { maskCpf } from '@/lib/utils/cpf'
 import { DeactivateButton } from './DeactivateButton'
+import { ReactivateButton } from './ReactivateButton'
 
 interface Props {
   params: { id: string }
@@ -107,16 +107,7 @@ export default async function MemberProfilePage({ params }: Props) {
             {member.status === 'active' ? (
               <DeactivateButton memberId={member.id} />
             ) : (
-              <form action={deactivateMemberAction}>
-                <input type="hidden" name="id" value={member.id} />
-                <input type="hidden" name="action" value="reactivate" />
-                <button
-                  type="submit"
-                  className="bg-emerald-600 text-white px-4 h-10 rounded-lg text-sm font-medium hover:bg-emerald-700"
-                >
-                  Reativar
-                </button>
-              </form>
+              <ReactivateButton memberId={member.id} />
             )}
           </div>
         </div>
