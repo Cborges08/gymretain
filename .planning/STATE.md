@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 current_plan: 1
 status: Executing Phase 03
-stopped_at: Completed 03-01-PLAN.md (Member Server Actions and CPF utilities)
-last_updated: "2026-03-30T11:23:17.063Z"
+stopped_at: Completed 03-03-PLAN.md (Member create form page at /dashboard/members/new)
+last_updated: "2026-03-30T11:28:38.768Z"
 progress:
   total_phases: 9
   completed_phases: 2
   total_plans: 13
-  completed_plans: 11
+  completed_plans: 12
 ---
 
 # Project State
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 **Phase:** 3
 **Current Plan:** 1
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-30T11:23:17.061Z
-**Stopped at:** Completed 03-01-PLAN.md (Member Server Actions and CPF utilities)
+**Last session:** 2026-03-30T11:28:38.765Z
+**Stopped at:** Completed 03-03-PLAN.md (Member create form page at /dashboard/members/new)
 
 ## Decisions
 
@@ -52,6 +52,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 03]: CPF validation strips non-digits before length check (supports formatted input like 123.456.789-01)
 - [Phase 03]: Unique violation detection uses error.message string match for email/cpf constraint names
 - [Phase 03]: stripCpf applied via Zod transform before pipe to length(11) — DB always stores raw 11 digits
+- [Phase 03]: Error displayed as single banner above form actions (not per-field) — createMemberAction returns one error string
+- [Phase 03]: noValidate on form defers validation to server action; CPF maxLength=14 accommodates formatted input
 
 ## Performance Metrics
 
@@ -67,6 +69,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | Phase 03 P02 | 75 | 2 tasks | 2 files |
 | Phase 03 P05 | 82 | 1 tasks | 2 files |
 | Phase 03 P01 | 175 | 3 tasks | 6 files |
+| Phase 03 P03 | 120 | 1 tasks | 1 files |
 
 ## Milestone Progress
 
