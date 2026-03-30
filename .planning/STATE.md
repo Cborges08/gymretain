@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 current_plan: 1
 status: Executing Phase 03
-stopped_at: Completed 03-02-PLAN.md (Member list page and SidebarNav QR link)
-last_updated: "2026-03-30T11:21:06.263Z"
+stopped_at: Completed 03-05-PLAN.md (Gym QR code page at /dashboard/qr-code)
+last_updated: "2026-03-30T11:22:54.462Z"
 progress:
   total_phases: 9
   completed_phases: 2
   total_plans: 13
-  completed_plans: 9
+  completed_plans: 11
 ---
 
 # Project State
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 **Phase:** 3
 **Current Plan:** 1
 **Milestone:** MVP v1.0
-**Last session:** 2026-03-30T11:21:06.260Z
-**Stopped at:** Completed 03-02-PLAN.md (Member list page and SidebarNav QR link)
+**Last session:** 2026-03-30T11:22:32.249Z
+**Stopped at:** Completed 03-05-PLAN.md (Gym QR code page at /dashboard/qr-code)
 
 ## Decisions
 
@@ -48,6 +48,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - Phase 02 (Plan 04): logout.ts copied from plan 02-01 parallel wave worktree (dependency not yet merged)
 - [Phase 03]: Server Component reads org_id from JWT app_metadata for member list query
 - [Phase 03]: nullsFirst on last_checked_in ensures never-checked-in members appear first
+- [Phase 03]: QR code page split into two files (page.tsx + QRCodeDisplay.tsx) because 'use client' cannot appear mid-file in Next.js
 
 ## Performance Metrics
 
@@ -61,6 +62,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | 02    | 03   | 149          | 2     | 4     |
 | 02    | 04   | 420          | 3     | 5     |
 | Phase 03 P02 | 75 | 2 tasks | 2 files |
+| Phase 03 P05 | 82 | 1 tasks | 2 files |
+| Phase 03 P01 | 175 | 3 tasks | 6 files |
 
 ## Milestone Progress
 
