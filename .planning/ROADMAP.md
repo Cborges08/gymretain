@@ -12,7 +12,8 @@
 
 - [ ] **Phase 1: Project Scaffold & Database Foundation** - Next.js app initialized, Supabase schema live, RLS policies enforced, deploy pipeline running
 - [ ] **Phase 2: Admin Authentication** - Admin can register, login, logout, reset password; all dashboard routes protected by middleware
-- [x] **Phase 3: Member Management** - Admin can create, list, edit, deactivate members; QR codes auto-generated and displayable (completed 2026-03-30)
+- [x] **Phase 3: Member Management** - Admin can create, list, edit, deactivate members; QR codes auto-generated and displayable
+ (completed 2026-03-30)
 - [ ] **Phase 4: QR Check-In Flow** - Member scans QR code and registers check-in without login; duplicates blocked; audit trail recorded
 - [ ] **Phase 5: Dashboard â€” Member Overview** - Admin sees all members sorted by inactivity, with risk counts and paginated check-in history
 - [ ] **Phase 6: Dashboard â€” Actions & Churn Fallback** - Admin can mark member as contacted; manual churn check button available as cron fallback
@@ -164,8 +165,11 @@ Plans:
   - Audit trail (`ip_address`, `user_agent`) enables fraud detection in Phase 9 (Pitfall 1)
   - Page is a public Server Component â€” no auth header, no session required
 
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — POST /api/checkin route handler: QR validation, CPF lookup, duplicate detection, audit trail (Wave 1)
+- [ ] 04-02-PLAN.md — /checkin/[hash] Server + Client Component pages: check-in form, success screen, error states (Wave 1)
 
 ---
 
