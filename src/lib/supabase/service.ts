@@ -1,6 +1,7 @@
 // src/lib/supabase/service.ts
 // WARNING: This client bypasses ALL RLS policies.
 // Use ONLY in:
+//   - /api/checkin (Phase 4) — member lookup + check-in insert (public endpoint, no auth)
 //   - /api/cron/detect-churn (Phase 7)
 //   - Server-side admin operations where RLS is intentionally bypassed
 // NEVER import this in Client Components or expose to browser.

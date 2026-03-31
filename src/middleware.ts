@@ -46,7 +46,14 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
+  // Public routes that bypass auth guard (no session required):
+  //   /checkin/:path*  — member-facing QR check-in page (Phase 4)
+  //   /api/checkin     — check-in API endpoint (Phase 4)
+  //   /auth/*          — login, signup, reset-password pages
+  // These paths do not start with /dashboard or /api/admin, so isProtected = false.
+
   // Protect dashboard and admin API routes (per D-13)
+  // Public routes (/checkin/:path*, /api/checkin) do not match — no changes needed
   const isProtected =
     pathname.startsWith('/dashboard') || pathname.startsWith('/api/admin')
 

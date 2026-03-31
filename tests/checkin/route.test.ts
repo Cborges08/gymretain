@@ -130,7 +130,7 @@ describe('POST /api/checkin', () => {
       insertResult: { data: { checked_in_at: '2026-03-31T18:00:00.000Z' }, error: null },
     })
 
-    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as ReturnType<typeof createServiceRoleClient>)
+    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as unknown as ReturnType<typeof createServiceRoleClient>)
 
     const req = makeRequest({ qr_hash: 'valid-hash', cpf: '123.456.789-01' })
     const res = await POST(req)
@@ -150,7 +150,7 @@ describe('POST /api/checkin', () => {
       duplicateResult: { data: { checked_in_at: '2026-03-31T16:00:00.000Z' }, error: null },
     })
 
-    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as ReturnType<typeof createServiceRoleClient>)
+    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as unknown as ReturnType<typeof createServiceRoleClient>)
 
     const req = makeRequest({ qr_hash: 'valid-hash', cpf: '12345678901' })
     const res = await POST(req)
@@ -171,7 +171,7 @@ describe('POST /api/checkin', () => {
       insertResult: { data: { checked_in_at: '2026-03-31T18:30:00.000Z' }, error: null },
     })
 
-    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as ReturnType<typeof createServiceRoleClient>)
+    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as unknown as ReturnType<typeof createServiceRoleClient>)
 
     const req = makeRequest(
       { qr_hash: 'valid-hash', cpf: '12345678901' },
@@ -201,7 +201,7 @@ describe('POST /api/checkin', () => {
       insertResult: { data: { checked_in_at: '2026-03-31T19:00:00.000Z' }, error: null },
     })
 
-    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as ReturnType<typeof createServiceRoleClient>)
+    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as unknown as ReturnType<typeof createServiceRoleClient>)
 
     const req = makeRequest({ qr_hash: 'valid-hash', cpf: '12345678901' })
     const res = await POST(req)
@@ -223,7 +223,7 @@ describe('POST /api/checkin', () => {
       memberResult: { data: null, error: { message: 'not found' } },
     })
 
-    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as ReturnType<typeof createServiceRoleClient>)
+    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as unknown as ReturnType<typeof createServiceRoleClient>)
 
     const req = makeRequest({ qr_hash: 'valid-hash', cpf: '99999999999' })
     const res = await POST(req)
@@ -243,7 +243,7 @@ describe('POST /api/checkin', () => {
       memberResult: { data: null, error: { message: 'not found' } },
     })
 
-    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as ReturnType<typeof createServiceRoleClient>)
+    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as unknown as ReturnType<typeof createServiceRoleClient>)
 
     const req = makeRequest({ qr_hash: 'valid-hash', cpf: '88888888888' })
     const res = await POST(req)
@@ -260,7 +260,7 @@ describe('POST /api/checkin', () => {
       orgResult: { data: null, error: { message: 'not found' } },
     })
 
-    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as ReturnType<typeof createServiceRoleClient>)
+    mockedCreateServiceRoleClient.mockReturnValue({ from: mockFrom } as unknown as ReturnType<typeof createServiceRoleClient>)
 
     const req = makeRequest({ qr_hash: 'unknown-hash', cpf: '12345678901' })
     const res = await POST(req)
