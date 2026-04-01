@@ -26,12 +26,12 @@
 
 ### Check-in
 
-- [ ] **CHKN-01**: Aluno escaneia o QR code da academia, acessa página de check-in sem login, digita CPF e confirma presença
-- [ ] **CHKN-02**: Página de check-in confirma check-in com nome do aluno e horário
+- [x] **CHKN-01**: Aluno escaneia o QR code da academia, acessa página de check-in sem login, digita CPF e confirma presença
+- [x] **CHKN-02**: Página de check-in confirma check-in com nome do aluno e horário
 - [ ] **CHKN-03**: Check-in duplicado na mesma sessão (dentro de 4h) é rejeitado com mensagem amigável
 - [ ] **CHKN-04**: Check-in registra timestamp, IP e user-agent para auditoria
 - [ ] **CHKN-05**: `last_checked_in` do aluno é atualizado a cada check-in
-- [ ] **CHKN-06**: QR code inválido ou de aluno desativado exibe página de erro clara
+- [x] **CHKN-06**: QR code inválido ou de aluno desativado exibe página de erro clara
 
 ### Dashboard
 
@@ -116,24 +116,24 @@
 | MEMB-05 | Phase 3 | Complete |
 | MEMB-06 | Phase 3 | Complete |
 | MEMB-07 | Phase 3 | Complete |
-| CHKN-01 | Phase 4 | Pending |
-| CHKN-02 | Phase 4 | Pending |
+| CHKN-01 | Phase 4 | Complete |
+| CHKN-02 | Phase 4 | Complete |
 | CHKN-03 | Phase 4 | Pending |
 | CHKN-04 | Phase 4 | Pending |
 | CHKN-05 | Phase 4 | Pending |
-| CHKN-06 | Phase 4 | Pending |
-| DASH-01 | Phase 4 | Pending |
-| DASH-02 | Phase 4 | Pending |
-| DASH-03 | Phase 4 | Pending |
-| DASH-04 | Phase 4 | Pending |
-| DASH-05 | Phase 4 | Pending |
-| ALRT-01 | Phase 5 | Pending |
-| ALRT-02 | Phase 5 | Pending |
-| ALRT-03 | Phase 5 | Pending |
-| ALRT-04 | Phase 5 | Pending |
-| ALRT-05 | Phase 5 | Pending |
-| ALRT-06 | Phase 5 | Pending |
-| ALRT-07 | Phase 5 | Pending |
+| CHKN-06 | Phase 4 | Complete |
+| DASH-01 | Phase 5 | Pending |
+| DASH-02 | Phase 5 | Pending |
+| DASH-03 | Phase 5 | Pending |
+| DASH-04 | Phase 6 | Pending |
+| DASH-05 | Phase 6 | Pending |
+| ALRT-01 | Phase 7 | Pending |
+| ALRT-02 | Phase 8 | Pending |
+| ALRT-03 | Phase 8 | Pending |
+| ALRT-04 | Phase 7 | Pending |
+| ALRT-05 | Phase 7 | Pending |
+| ALRT-06 | Phase 8 | Pending |
+| ALRT-07 | Phase 8 | Pending |
 
 **Coverage:**
 - v1 requirements: 35 total

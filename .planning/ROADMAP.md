@@ -14,7 +14,7 @@
 - [ ] **Phase 2: Admin Authentication** - Admin can register, login, logout, reset password; all dashboard routes protected by middleware
 - [x] **Phase 3: Member Management** - Admin can create, list, edit, deactivate members; QR codes auto-generated and displayable
  (completed 2026-03-30)
-- [ ] **Phase 4: QR Check-In Flow** - Member scans QR code and registers check-in without login; duplicates blocked; audit trail recorded
+- [x] **Phase 4: QR Check-In Flow** - Member scans QR code and registers check-in without login; duplicates blocked; audit trail recorded (completed 2026-04-01)
 - [ ] **Phase 5: Dashboard — Member Overview** - Admin sees all members sorted by inactivity, with risk counts and paginated check-in history
 - [ ] **Phase 6: Dashboard — Actions & Churn Fallback** - Admin can mark member as contacted; manual churn check button available as cron fallback
 - [ ] **Phase 7: Churn Detection Engine** - Nightly cron job identifies inactive members using service role key; alerts created in DB
@@ -168,8 +168,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md � POST /api/checkin route handler: QR validation, CPF lookup, duplicate detection, audit trail (Wave 1)
-- [ ] 04-02-PLAN.md � /checkin/[hash] Server + Client Component pages: check-in form, success screen, error states (Wave 1)
+- [x] 04-01-PLAN.md � POST /api/checkin route handler: QR validation, CPF lookup, duplicate detection, audit trail (Wave 1)
+- [x] 04-02-PLAN.md � /checkin/[hash] Server + Client Component pages: check-in form, success screen, error states (Wave 1)
 
 ---
 
@@ -338,7 +338,7 @@ Plans:
 | 1. Project Scaffold & Database Foundation | 1/4 | In Progress|  |
 | 2. Admin Authentication | 4/4 | In Progress|  |
 | 3. Member Management | 5/5 | Complete   | 2026-03-30 |
-| 4. QR Check-In Flow | 0/? | Not started | - |
+| 4. QR Check-In Flow | 2/2 | Complete   | 2026-04-01 |
 | 5. Dashboard — Member Overview | 0/? | Not started | - |
 | 6. Dashboard — Actions & Churn Fallback | 0/? | Not started | - |
 | 7. Churn Detection Engine | 0/? | Not started | - |
