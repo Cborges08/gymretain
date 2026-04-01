@@ -25,8 +25,11 @@ O dono da academia sabe, sem esforço, quais alunos estão sumindo — e recebe 
 - [x] Admin pode cadastrar, editar, desativar/reativar alunos com validação de CPF e email duplicado (pt-BR) — Validated in Phase 03: member-management
 - [x] Admin pode visualizar lista de alunos ativos, perfil individual com CPF mascarado, e exibir/imprimir QR Code da academia — Validated in Phase 03: member-management
 
+### Validated
+
+- [x] Aluno escaneia QR code da academia e registra check-in via CPF, sem login ou app — Validated in Phase 04: qr-check-in-flow
+
 ### Active
-- [ ] Aluno escaneia QR code e registra check-in sem precisar de login ou app
 - [ ] Admin visualiza histórico de check-ins por aluno e frequência geral
 - [ ] Sistema envia email automático ao admin quando aluno fica 7+ dias sem check-in
 - [ ] Email de alerta inclui histórico de frequência do aluno e sugestão de abordagem
@@ -85,4 +88,4 @@ Este documento evolui a cada transição de fase e milestone.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-30 — Phase 03 complete (member management live — CRUD, CPF masking, gym QR code page)*
+*Last updated: 2026-04-01 — Phase 04 complete (QR check-in flow live — gym QR scan, CPF entry, duplicate detection, audit trail)*
