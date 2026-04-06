@@ -16,7 +16,7 @@
  (completed 2026-03-30)
 - [x] **Phase 4: QR Check-In Flow** - Member scans QR code and registers check-in without login; duplicates blocked; audit trail recorded
  (completed 2026-04-01)
-- [ ] **Phase 5: Dashboard — Member Overview** - Admin sees all members sorted by inactivity, with risk counts and paginated check-in history
+- [x] **Phase 5: Dashboard — Member Overview** - Admin sees all members sorted by inactivity, with risk counts and paginated check-in history (completed 2026-04-06)
 - [ ] **Phase 6: Dashboard — Actions & Churn Fallback** - Admin can mark member as contacted; manual churn check button available as cron fallback
 - [ ] **Phase 7: Churn Detection Engine** - Nightly cron job identifies inactive members using service role key; alerts created in DB
 - [ ] **Phase 8: Email Alerts & Delivery** - Admin receives contextual churn alert emails via Resend; idempotency, batching, and failure logging in place
@@ -204,7 +204,7 @@ Plans:
 Plans:
 - [x] 05-01-PLAN.md � Wave 0: test scaffold (fixtures + failing tests for DASH-01/02/03)
 - [x] 05-02-PLAN.md � Member list: risk counters + updated columns (DASH-01, DASH-02)
-- [ ] 05-03-PLAN.md � Member detail: paginated check-in history (DASH-03)
+- [x] 05-03-PLAN.md � Member detail: paginated check-in history (DASH-03)
 
 ---
 
@@ -344,7 +344,7 @@ Plans:
 | 2. Admin Authentication | 4/4 | In Progress|  |
 | 3. Member Management | 5/5 | Complete   | 2026-03-30 |
 | 4. QR Check-In Flow | 2/2 | Complete   | 2026-04-01 |
-| 5. Dashboard — Member Overview | 2/3 | In Progress|  |
+| 5. Dashboard — Member Overview | 3/3 | Complete   | 2026-04-06 |
 | 6. Dashboard — Actions & Churn Fallback | 0/? | Not started | - |
 | 7. Churn Detection Engine | 0/? | Not started | - |
 | 8. Email Alerts & Delivery | 0/? | Not started | - |

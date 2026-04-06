@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 current_plan: 2
 status: Executing Phase 05
-stopped_at: Completed 05-02-PLAN.md (risk counters + table columns)
-last_updated: "2026-04-06T15:34:32.723Z"
+stopped_at: Completed 05-03-PLAN.md (paginated check-in history table)
+last_updated: "2026-04-06T15:37:26.722Z"
 progress:
   total_phases: 9
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 18
-  completed_plans: 17
+  completed_plans: 18
 ---
 
 # Project State
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 **Phase:** 5
 **Current Plan:** 2
 **Milestone:** MVP v1.0
-**Last session:** 2026-04-06T15:34:32.721Z
-**Stopped at:** Completed 05-02-PLAN.md (risk counters + table columns)
+**Last session:** 2026-04-06T15:37:26.720Z
+**Stopped at:** Completed 05-03-PLAN.md (paginated check-in history table)
 
 ## Decisions
 
@@ -62,6 +62,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 05 Plan 01]: member-list-sorting.test.ts PASSES immediately — getDaysAgo/formatLastCheckin already exist; risk/pagination tests are RED as intended
 - [Phase 05]: Risk thresholds: <=4d active, 4<d<=7 at_risk, >7 or null inactive — D-07 compliant
 - [Phase 05]: computeCounters derives stats from same memberList fetch, no second DB query per D-08
+- [Phase 05]: user_agent excluded from check-in history table (D-13); only Data, Horário, IP columns shown
+- [Phase 05]: Server Component paginated fetch pattern: .select(..., { count: 'exact' }).range(from, to) with URL ?page= param drives re-fetch
 
 ## Performance Metrics
 
@@ -82,6 +84,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | Phase 04 P02 | 1500 | 3 tasks | 5 files |
 | 05    | 01   | 74           | 2     | 5     |
 | Phase 05 P02 | 73 | 2 tasks | 2 files |
+| Phase 05 P03 | 91 | 2 tasks | 2 files |
 
 ## Milestone Progress
 
