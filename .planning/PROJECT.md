@@ -29,6 +29,10 @@ O dono da academia sabe, sem esforço, quais alunos estão sumindo — e recebe 
 
 - [x] Aluno escaneia QR code da academia e registra check-in via CPF, sem login ou app — Validated in Phase 04: qr-check-in-flow
 
+### Validated
+
+- [x] Admin visualiza lista de membros por inatividade com contadores de risco (Ativo/Em risco/Inativo) e histórico de check-ins paginado por aluno — Validated in Phase 05: dashboard-member-overview
+
 ### Active
 - [ ] Admin visualiza histórico de check-ins por aluno e frequência geral
 - [ ] Sistema envia email automático ao admin quando aluno fica 7+ dias sem check-in
