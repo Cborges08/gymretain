@@ -203,7 +203,7 @@ Plans:
 
 Plans:
 - [x] 05-01-PLAN.md � Wave 0: test scaffold (fixtures + failing tests for DASH-01/02/03)
-- [ ] 05-02-PLAN.md � Member list: risk counters + updated columns (DASH-01, DASH-02)
+- [x] 05-02-PLAN.md � Member list: risk counters + updated columns (DASH-01, DASH-02)
 - [ ] 05-03-PLAN.md � Member detail: paginated check-in history (DASH-03)
 
 ---
@@ -344,7 +344,7 @@ Plans:
 | 2. Admin Authentication | 4/4 | In Progress|  |
 | 3. Member Management | 5/5 | Complete   | 2026-03-30 |
 | 4. QR Check-In Flow | 2/2 | Complete   | 2026-04-01 |
-| 5. Dashboard — Member Overview | 1/3 | In Progress|  |
+| 5. Dashboard — Member Overview | 2/3 | In Progress|  |
 | 6. Dashboard — Actions & Churn Fallback | 0/? | Not started | - |
 | 7. Churn Detection Engine | 0/? | Not started | - |
 | 8. Email Alerts & Delivery | 0/? | Not started | - |

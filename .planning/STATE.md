@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 current_plan: 2
 status: Executing Phase 05
-stopped_at: "Completed 05-01-PLAN.md (TDD wave-0 test scaffold)"
-last_updated: "2026-04-06T15:30:46Z"
+stopped_at: Completed 05-02-PLAN.md (risk counters + table columns)
+last_updated: "2026-04-06T15:34:32.723Z"
 progress:
   total_phases: 9
   completed_phases: 4
   total_plans: 18
-  completed_plans: 16
+  completed_plans: 17
 ---
 
 # Project State
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 **Phase:** 5
 **Current Plan:** 2
 **Milestone:** MVP v1.0
-**Last session:** 2026-04-06T15:30:46Z
-**Stopped at:** Completed 05-01-PLAN.md (TDD wave-0 test scaffold)
+**Last session:** 2026-04-06T15:34:32.721Z
+**Stopped at:** Completed 05-02-PLAN.md (risk counters + table columns)
 
 ## Decisions
 
@@ -60,6 +60,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 04]: OrgRow interface added to page.tsx to resolve TypeScript inference issue with Supabase partial .select() returning 'never'
 - [Phase 05 Plan 01]: mockMembers uses Date.now() arithmetic (not hardcoded dates) to prevent stale test fixtures
 - [Phase 05 Plan 01]: member-list-sorting.test.ts PASSES immediately — getDaysAgo/formatLastCheckin already exist; risk/pagination tests are RED as intended
+- [Phase 05]: Risk thresholds: <=4d active, 4<d<=7 at_risk, >7 or null inactive — D-07 compliant
+- [Phase 05]: computeCounters derives stats from same memberList fetch, no second DB query per D-08
 
 ## Performance Metrics
 
@@ -79,6 +81,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | Phase 03 P04 | 1080 | 2 tasks | 5 files |
 | Phase 04 P02 | 1500 | 3 tasks | 5 files |
 | 05    | 01   | 74           | 2     | 5     |
+| Phase 05 P02 | 73 | 2 tasks | 2 files |
 
 ## Milestone Progress
 
