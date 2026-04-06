@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { createServerClient } from '@/lib/supabase/server'
-import { formatLastCheckin } from '@/lib/utils/members'
+import { getDaysAgo, formatLastCheckin, classifyRisk, computeCounters } from '@/lib/utils/members'
 
 export default async function MembersPage() {
   const supabase = createServerClient()
@@ -17,6 +17,7 @@ export default async function MembersPage() {
     : { data: [] }
 
   const memberList = members ?? []
+  const counters = computeCounters(memberList)
 
   return (
     <div className="bg-gray-50 min-h-full p-8">
@@ -29,6 +30,25 @@ export default async function MembersPage() {
         >
           + Novo Membro
         </Link>
+      </div>
+
+      {/* Risk counters — per D-06, D-07, D-08 */}
+      <div className="flex gap-4 mb-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-4 min-w-[120px]">
+          <p className="text-2xl font-semibold text-gray-900">{counters.active}</p>
+          <p className="text-sm text-gray-900">Ativos</p>
+          <p className="text-xs text-gray-500">até 4 dias</p>
+        </div>
+        <div className="bg-white border border-gray-200 rounded-lg p-4 min-w-[120px]">
+          <p className="text-2xl font-semibold text-gray-900">{counters.atRisk}</p>
+          <p className="text-sm text-gray-900">Em risco</p>
+          <p className="text-xs text-gray-500">4-7 dias</p>
+        </div>
+        <div className="bg-white border border-gray-200 rounded-lg p-4 min-w-[120px]">
+          <p className="text-2xl font-semibold text-gray-900">{counters.inactive}</p>
+          <p className="text-sm text-gray-900">Inativos</p>
+          <p className="text-xs text-gray-500">7+ dias</p>
+        </div>
       </div>
 
       {/* Empty state */}
@@ -47,8 +67,8 @@ export default async function MembersPage() {
               <tr className="bg-gray-50 border-b border-gray-200">
                 <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Nome</th>
                 <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Email</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Último check-in</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Status</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Dias sem aparecer</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Nível de risco</th>
               </tr>
             </thead>
             <tbody>
@@ -70,13 +90,25 @@ export default async function MembersPage() {
                     {formatLastCheckin(member.last_checked_in)}
                   </td>
                   <td className="px-4 py-3">
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold ${
-                      member.status === 'active'
-                        ? 'bg-emerald-100 text-emerald-700'
-                        : 'bg-gray-100 text-gray-500'
-                    }`}>
-                      {member.status === 'active' ? 'Ativo' : 'Inativo'}
-                    </span>
+                    {(() => {
+                      const days = getDaysAgo(member.last_checked_in)
+                      const risk = classifyRisk(days)
+                      const styles = {
+                        active: 'bg-emerald-100 text-emerald-700',
+                        at_risk: 'bg-amber-100 text-amber-700',
+                        inactive: 'bg-gray-100 text-gray-500',
+                      }
+                      const labels = {
+                        active: 'Ativo',
+                        at_risk: 'Em risco',
+                        inactive: 'Inativo',
+                      }
+                      return (
+                        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold ${styles[risk]}`}>
+                          {labels[risk]}
+                        </span>
+                      )
+                    })()}
                   </td>
                 </tr>
               ))}
