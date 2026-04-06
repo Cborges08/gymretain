@@ -14,7 +14,8 @@
 - [ ] **Phase 2: Admin Authentication** - Admin can register, login, logout, reset password; all dashboard routes protected by middleware
 - [x] **Phase 3: Member Management** - Admin can create, list, edit, deactivate members; QR codes auto-generated and displayable
  (completed 2026-03-30)
-- [x] **Phase 4: QR Check-In Flow** - Member scans QR code and registers check-in without login; duplicates blocked; audit trail recorded (completed 2026-04-01)
+- [x] **Phase 4: QR Check-In Flow** - Member scans QR code and registers check-in without login; duplicates blocked; audit trail recorded
+ (completed 2026-04-01)
 - [ ] **Phase 5: Dashboard â€” Member Overview** - Admin sees all members sorted by inactivity, with risk counts and paginated check-in history
 - [ ] **Phase 6: Dashboard â€” Actions & Churn Fallback** - Admin can mark member as contacted; manual churn check button available as cron fallback
 - [ ] **Phase 7: Churn Detection Engine** - Nightly cron job identifies inactive members using service role key; alerts created in DB
@@ -198,8 +199,12 @@ Plans:
   - Paginate at 50 records maximum â€” never `SELECT *` check-ins without limit (Pitfall 5)
   - Days-away calculation done in DB query (`NOW() - last_checked_in`) â€” not in JavaScript
 
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 3 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Wave 0: test scaffold (fixtures + failing tests for DASH-01/02/03)
+- [ ] 05-02-PLAN.md — Member list: risk counters + updated columns (DASH-01, DASH-02)
+- [ ] 05-03-PLAN.md — Member detail: paginated check-in history (DASH-03)
 
 ---
 
