@@ -52,3 +52,26 @@ export function computeCounters(
   }
   return counts
 }
+
+/**
+ * Calculates the Supabase .range() parameters for a page.
+ * page=1, pageSize=50 → { from: 0, to: 49 }
+ * Per D-09, D-10 (CONTEXT.md): server-side URL param pagination.
+ */
+export function getPaginationRange(
+  page: number,
+  pageSize: number
+): { from: number; to: number } {
+  const from = (page - 1) * pageSize
+  const to = page * pageSize - 1
+  return { from, to }
+}
+
+/**
+ * Returns total page count for a given record count and page size.
+ * count=0 → 0; count=51, pageSize=50 → 2
+ */
+export function getTotalPages(count: number, pageSize: number): number {
+  if (count === 0) return 0
+  return Math.ceil(count / pageSize)
+}
