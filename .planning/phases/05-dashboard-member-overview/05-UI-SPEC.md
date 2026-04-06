@@ -55,9 +55,8 @@ Declared values (multiples of 4, derived from existing codebase):
 
 | Role | Size | Weight | Line Height |
 |------|------|--------|-------------|
-| Body | 14px | 400 (regular) | 1.5 |
 | Label/Small | 12px | 500 (semibold) | 1.5 |
-| Heading (h2) | 18px | 600 (semibold) | 1.2 |
+| Body | 14px | 400 (regular) | 1.5 |
 | Heading (h1) | 24px | 600 (semibold) | 1.2 |
 | Display/Page title | 28px | 600 (semibold) | 1.2 |
 
@@ -373,7 +372,7 @@ Executor chooses pagination approach based on performance.
 - [ ] Dimension 1 Copywriting: All Portuguese copy specified and tone-appropriate
 - [ ] Dimension 2 Visuals: Layout, tables, badges, counters described; links to existing Phase 3 patterns confirmed
 - [ ] Dimension 3 Color: emerald-600 accent, gray palette, status badge colors declared
-- [ ] Dimension 4 Typography: 14px body, 12px label, 24px heading with weights and line heights
+- [ ] Dimension 4 Typography: 12px label, 14px body, 24px heading, 28px display with weights and line heights
 - [ ] Dimension 5 Spacing: 4px multiples declared; p-8, p-6, p-4, gap-3/4 usage confirmed
 - [ ] Dimension 6 Registry Safety: No third-party registry; plain Tailwind only
 
@@ -399,7 +398,7 @@ Executor chooses pagination approach based on performance.
 
 **Colors:** Emerald green (primary), gray palette (backgrounds), status badges (active=emerald, at-risk=amber, inactive=gray)
 
-**Typography:** 14px body, 24px heading, 12px labels, weights 400/500/600 only
+**Typography:** 12px label, 14px body, 24px heading, 28px display, weights 400/500/600 only
 
 **Spacing:** 4px scale multiples (4, 8, 16, 24, 32, 48, 64)
 
