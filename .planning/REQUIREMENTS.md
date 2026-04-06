@@ -35,9 +35,9 @@
 
 ### Dashboard
 
-- [ ] **DASH-01**: Dashboard exibe lista de alunos ordenada por dias sem aparecer (mais críticos primeiro)
-- [ ] **DASH-02**: Dashboard mostra contagem: alunos ativos, em risco (4-7 dias), inativos (7+ dias)
-- [ ] **DASH-03**: Histórico de check-ins do aluno é paginado (máx 50 por página)
+- [x] **DASH-01**: Dashboard exibe lista de alunos ordenada por dias sem aparecer (mais críticos primeiro)
+- [x] **DASH-02**: Dashboard mostra contagem: alunos ativos, em risco (4-7 dias), inativos (7+ dias)
+- [x] **DASH-03**: Histórico de check-ins do aluno é paginado (máx 50 por página)
 - [ ] **DASH-04**: Admin pode marcar aluno como "contatado" para silenciar alertas por 7 dias
 - [ ] **DASH-05**: Dashboard tem botão "Verificar Churn Agora" como fallback do cron
 
@@ -122,9 +122,9 @@
 | CHKN-04 | Phase 4 | Pending |
 | CHKN-05 | Phase 4 | Pending |
 | CHKN-06 | Phase 4 | Complete |
-| DASH-01 | Phase 5 | Pending |
-| DASH-02 | Phase 5 | Pending |
-| DASH-03 | Phase 5 | Pending |
+| DASH-01 | Phase 5 | Complete |
+| DASH-02 | Phase 5 | Complete |
+| DASH-03 | Phase 5 | Complete |
 | DASH-04 | Phase 6 | Pending |
 | DASH-05 | Phase 6 | Pending |
 | ALRT-01 | Phase 7 | Pending |

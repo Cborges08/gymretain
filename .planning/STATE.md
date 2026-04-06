@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: Not started
-status: Ready to plan
-stopped_at: Completed 04-02-PLAN.md (Check-in page Server Component and CheckinForm)
-last_updated: "2026-04-01T12:10:01.768Z"
+current_plan: 2
+status: Executing Phase 05
+stopped_at: "Completed 05-01-PLAN.md (TDD wave-0 test scaffold)"
+last_updated: "2026-04-06T15:30:46Z"
 progress:
   total_phases: 9
   completed_phases: 4
-  total_plans: 15
-  completed_plans: 15
+  total_plans: 18
+  completed_plans: 16
 ---
 
 # Project State
@@ -20,15 +20,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** O dono da academia sabe, sem esforco, quais alunos estao sumindo e recebe um empurrao para agir antes de perde-los.
-**Current focus:** Phase 04 — qr-check-in-flow
+**Current focus:** Phase 05 — dashboard-member-overview
 
 ## Current Status
 
 **Phase:** 5
-**Current Plan:** Not started
+**Current Plan:** 2
 **Milestone:** MVP v1.0
-**Last session:** 2026-04-01T11:05:58.991Z
-**Stopped at:** Completed 04-02-PLAN.md (Check-in page Server Component and CheckinForm)
+**Last session:** 2026-04-06T15:30:46Z
+**Stopped at:** Completed 05-01-PLAN.md (TDD wave-0 test scaffold)
 
 ## Decisions
 
@@ -58,6 +58,8 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 03]: Edit form cancel returns to profile page /dashboard/members/{id}, not list - correct UX for edit cancel
 - [Phase 04]: Async Server Component tested by calling function directly + ReactDOMServer.renderToStaticMarkup (no testing-library needed, vitest node env)
 - [Phase 04]: OrgRow interface added to page.tsx to resolve TypeScript inference issue with Supabase partial .select() returning 'never'
+- [Phase 05 Plan 01]: mockMembers uses Date.now() arithmetic (not hardcoded dates) to prevent stale test fixtures
+- [Phase 05 Plan 01]: member-list-sorting.test.ts PASSES immediately — getDaysAgo/formatLastCheckin already exist; risk/pagination tests are RED as intended
 
 ## Performance Metrics
 
@@ -76,6 +78,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 | Phase 03 P03 | 120 | 1 tasks | 1 files |
 | Phase 03 P04 | 1080 | 2 tasks | 5 files |
 | Phase 04 P02 | 1500 | 3 tasks | 5 files |
+| 05    | 01   | 74           | 2     | 5     |
 
 ## Milestone Progress
 
