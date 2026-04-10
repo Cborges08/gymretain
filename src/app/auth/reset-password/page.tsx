@@ -1,17 +1,46 @@
 'use client'
 
-import { useActionState, Suspense } from 'react'
+import { Suspense } from 'react'
+import { useFormState, useFormStatus } from 'react-dom'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { requestPasswordReset, confirmPasswordReset } from '@/lib/actions/reset-password'
+
+function RequestSubmitButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      {pending ? 'Enviando...' : 'Enviar Link'}
+    </button>
+  )
+}
+
+function ConfirmSubmitButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      {pending ? 'Redefinindo...' : 'Redefinir Senha'}
+    </button>
+  )
+}
 
 function ResetPasswordContent() {
   const searchParams = useSearchParams()
   const tokenHash = searchParams.get('token_hash')
   const type = searchParams.get('type') || 'recovery'
 
-  const [requestState, requestAction, isRequestPending] = useActionState(requestPasswordReset, null)
-  const [confirmState, confirmAction, isConfirmPending] = useActionState(confirmPasswordReset, null)
+  const [requestState, requestAction] = useFormState(requestPasswordReset, null)
+  const [confirmState, confirmAction] = useFormState(confirmPasswordReset, null)
 
   // Confirmation form (token_hash present in URL from email link)
   if (tokenHash) {
@@ -44,13 +73,7 @@ function ResetPasswordContent() {
             <p className="text-red-500 text-sm">{confirmState.error}</p>
           )}
 
-          <button
-            type="submit"
-            disabled={isConfirmPending}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isConfirmPending ? 'Redefinindo...' : 'Redefinir Senha'}
-          </button>
+          <ConfirmSubmitButton />
         </form>
       </div>
     )
@@ -93,13 +116,7 @@ function ResetPasswordContent() {
             <p className="text-red-500 text-sm">{requestState.error}</p>
           )}
 
-          <button
-            type="submit"
-            disabled={isRequestPending}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isRequestPending ? 'Enviando...' : 'Enviar Link'}
-          </button>
+          <RequestSubmitButton />
 
           <div className="text-center">
             <Link href="/auth/login" className="text-emerald-600 hover:underline text-sm">
