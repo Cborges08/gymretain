@@ -59,7 +59,7 @@ export default async function MemberProfilePage({ params, searchParams }: Props)
     <div className="bg-gray-50 min-h-full p-8">
       {/* Page header */}
       <div className="flex items-center gap-3 mb-2">
-        <Link href="/dashboard/members" className="text-sm text-gray-500 hover:text-gray-900">
+        <Link href="/members" className="text-sm text-gray-500 hover:text-gray-900">
           Membros
         </Link>
         <span className="text-gray-300">/</span>
@@ -113,7 +113,7 @@ export default async function MemberProfilePage({ params, searchParams }: Props)
             </span>
 
             <Link
-              href={`/dashboard/members/${member.id}/edit`}
+              href={`/members/${member.id}/edit`}
               className="bg-emerald-600 text-white px-4 h-10 rounded-lg text-sm font-medium hover:bg-emerald-700 inline-flex items-center"
             >
               Editar

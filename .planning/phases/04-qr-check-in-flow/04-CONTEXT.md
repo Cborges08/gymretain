@@ -18,7 +18,7 @@ Not in this phase: check-in history display (Phase 5), dashboard counters (Phase
 ## Implementation Decisions
 
 ### Page Architecture
-- **D-01:** Check-in page lives at `src/app/checkin/[hash]/page.tsx` — outside the `(dashboard)` and `(auth)` route groups. No auth middleware applies to this route; add it to the middleware public-paths list explicitly.
+- **D-01:** Check-in page lives at `src/app/checkin/[hash]/page.tsx` — outside the `(dashboard)` and `(auth)` route groups. No auth middleware applies to this route. In the current codebase, `/checkin` is already public because `middleware.ts` only protects `/dashboard` and `/api/admin`; preserve and document that behavior rather than changing auth logic unnecessarily.
 - **D-02:** `page.tsx` is a **Server Component** that validates the QR hash upfront against the `organizations` table. If the hash doesn't exist → renders an inline error card (no redirect). If valid → renders the gym name and the `<CheckinForm>` Client Component.
 - **D-03:** `CheckinForm` is a **Client Component** — required for the CPF mask (client-side JS) and to call `POST /api/checkin` via `fetch`. It receives `{ orgId, orgName, qrHash }` as props from the Server Component.
 
@@ -77,7 +77,7 @@ Not in this phase: check-in history display (Phase 5), dashboard counters (Phase
 - `src/lib/supabase/service.ts` — Service role client (use for `/api/checkin`; update comment to include this route)
 - `src/lib/types/database.ts` — `Organization`, `Member`, `Checkin` types
 - `src/lib/utils/cpf.ts` — Existing CPF utility (check what's already there before writing new helpers)
-- `src/middleware.ts` — Add `/checkin` path to the public (unprotected) routes list
+- `src/middleware.ts` — Preserve `/checkin` and `/api/checkin` as public routes; current `isProtected` logic already leaves them unguarded
 - `src/app/(dashboard)/qr-code/QRCodeDisplay.tsx` — Reference for how QR code URL is constructed (`{APP_URL}/checkin/{qr_code_hash}`)
 
 </canonical_refs>
@@ -97,7 +97,7 @@ Not in this phase: check-in history display (Phase 5), dashboard counters (Phase
 - All form labels, messages, and errors in pt-BR
 
 ### Integration Points
-- `src/middleware.ts` must whitelist `/checkin/:path*` as a public route (no auth required)
+- `src/middleware.ts` must continue leaving `/checkin/:path*` and `/api/checkin` public (no auth required); a clarifying comment is sufficient unless auth logic changes
 - New route group: `src/app/checkin/[hash]/` — standalone, no shared layout with dashboard or auth
 - `createServiceRoleClient()` in `src/app/api/checkin/route.ts` — only place outside cron where service role is used
 

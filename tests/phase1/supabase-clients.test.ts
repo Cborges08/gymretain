@@ -49,9 +49,8 @@ describe('Phase 1: Supabase Client Factory (INFR-02)', () => {
         org_id: 'org-uuid',
         name: 'Test',
         email: 'test@example.com',
+        cpf: null,
         phone: null,
-        qr_code_hash: 'hash',
-        qr_code_generated_at: new Date().toISOString(),
         last_checked_in: null,
         status: 'active',
         external_id: null,  // Must accept null

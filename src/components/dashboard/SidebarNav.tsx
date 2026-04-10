@@ -4,10 +4,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const links = [
+  { href: '/dashboard', label: 'Início' },
   { href: '/dashboard/members', label: 'Membros' },
   { href: '/dashboard/qr-code', label: 'QR Code' },
-  { href: '/dashboard/alerts', label: 'Alertas' },
-  { href: '/dashboard/settings', label: 'Configurações' },
 ]
 
 export function SidebarNav() {
@@ -15,7 +14,9 @@ export function SidebarNav() {
   return (
     <ul className="space-y-1">
       {links.map((link) => {
-        const isActive = pathname.startsWith(link.href)
+        const isActive = link.href === '/dashboard'
+          ? pathname === '/dashboard'
+          : pathname.startsWith(link.href)
         return (
           <li key={link.href}>
             <Link

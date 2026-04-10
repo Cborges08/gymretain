@@ -1,5 +1,6 @@
 'use server'
 
+import { randomUUID } from 'crypto'
 import { createServerClient } from '@/lib/supabase/server'
 import { createServiceRoleClient } from '@/lib/supabase/service'
 import { redirect } from 'next/navigation'
@@ -41,7 +42,11 @@ export async function signupAction(
   const service = createServiceRoleClient()
   const { data: org, error: orgError } = await service
     .from('organizations')
-    .insert({ name: 'Minha Academia', admin_email: email })
+    .insert({
+      name: 'Minha Academia',
+      admin_email: email,
+      qr_code_hash: randomUUID(),
+    })
     .select()
     .single()
 

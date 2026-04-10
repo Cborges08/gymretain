@@ -77,5 +77,5 @@ export async function confirmPasswordReset(
     return { error: 'Erro ao redefinir senha. Tente novamente.' }
   }
 
-  redirect('/dashboard')
+  redirect('/')
 }

@@ -99,7 +99,7 @@ export function EditMemberForm({ member }: { member: Member }) {
         <div className="flex items-center gap-3">
           <SubmitButton />
           <Link
-            href={`/dashboard/members/${member.id}`}
+            href={`/members/${member.id}`}
             className="text-gray-600 hover:text-gray-900 text-sm"
           >
             Cancelar

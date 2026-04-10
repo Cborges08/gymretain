@@ -32,5 +32,5 @@ export async function loginAction(
     return { error: 'Email ou senha incorretos' }
   }
 
-  redirect('/dashboard')
+  redirect('/')
 }
