@@ -22,6 +22,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceRoleClient } from '@/lib/supabase/service'
 import { detectChurn } from '@/lib/utils/churn'
+import { sendChurnAlerts } from '@/lib/email/send-churn-alerts'
 
 export const dynamic = 'force-dynamic'
 
@@ -43,8 +44,17 @@ export async function GET(request: NextRequest) {
     const result = await detectChurn(supabase)
 
     console.log(
-      `[cron:detect-churn] completed: ${result.membersChecked} members checked, ` +
+      `[cron:detect-churn] detection done: ${result.membersChecked} members checked, ` +
         `${result.alertsCreated} alerts created, ${result.skippedExisting} skipped (existing alert)`
+    )
+
+    // Step 3 — Email pending alerts (Phase 8). Includes alerts created in
+    // earlier runs that were beyond the 100/run batch cap (ALRT-07).
+    const emails = await sendChurnAlerts(supabase)
+
+    console.log(
+      `[cron:detect-churn] emails: ${emails.sent} sent, ${emails.failed} failed, ` +
+        `${emails.skipped} skipped of ${emails.attempted} attempted`
     )
 
     return NextResponse.json({
@@ -53,6 +63,9 @@ export async function GET(request: NextRequest) {
       membersChecked: result.membersChecked,
       alertsCreated: result.alertsCreated,
       skippedExisting: result.skippedExisting,
+      emailsSent: emails.sent,
+      emailsFailed: emails.failed,
+      emailsSkipped: emails.skipped,
     })
   } catch (err) {
     console.error('[cron:detect-churn] failed:', err)

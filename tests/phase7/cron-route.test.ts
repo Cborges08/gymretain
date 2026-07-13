@@ -17,12 +17,18 @@ vi.mock('@/lib/utils/churn', async (importOriginal) => {
   const actual = await importOriginal<typeof import('@/lib/utils/churn')>()
   return { ...actual, detectChurn: vi.fn() }
 })
+vi.mock('@/lib/email/send-churn-alerts', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/lib/email/send-churn-alerts')>()
+  return { ...actual, sendChurnAlerts: vi.fn() }
+})
 
 import { createServiceRoleClient } from '@/lib/supabase/service'
 import { detectChurn } from '@/lib/utils/churn'
+import { sendChurnAlerts } from '@/lib/email/send-churn-alerts'
 import { GET } from '@/app/api/cron/detect-churn/route'
 
 const mockedDetectChurn = vi.mocked(detectChurn)
+const mockedSendAlerts = vi.mocked(sendChurnAlerts)
 const mockedCreateClient = vi.mocked(createServiceRoleClient)
 
 const CRON_SECRET = 'test-secret-abc123'
@@ -45,6 +51,12 @@ describe('GET /api/cron/detect-churn', () => {
       membersChecked: 3,
       alertsCreated: 2,
       skippedExisting: 1,
+    })
+    mockedSendAlerts.mockResolvedValue({
+      attempted: 2,
+      sent: 2,
+      failed: 0,
+      skipped: 0,
     })
   })
 
