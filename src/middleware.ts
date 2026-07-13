@@ -36,13 +36,17 @@ export async function middleware(request: NextRequest) {
   const isAuthRoute = pathname.startsWith('/auth')
   const isPublicCheckinRoute = pathname.startsWith('/checkin')
   const isPublicCheckinApi = pathname.startsWith('/api/checkin')
+  // Cron endpoints have no browser session — they authenticate via
+  // CRON_SECRET inside the route handler (Phase 7, ALRT-04).
+  const isCronApi = pathname.startsWith('/api/cron')
 
   // Deny-by-default: every route is protected unless explicitly public.
   // Covers /dashboard/* and any future /api/admin/* without an allow-list.
   const isProtected = !(
     isAuthRoute ||
     isPublicCheckinRoute ||
-    isPublicCheckinApi
+    isPublicCheckinApi ||
+    isCronApi
   )
 
   if (isProtected && !user) {
