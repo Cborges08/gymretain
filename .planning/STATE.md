@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: Not started
-status: Ready to plan
-stopped_at: Completed 05-03-PLAN.md (paginated check-in history table)
-last_updated: "2026-04-06T15:39:50.518Z"
+current_plan: Phases 6-9 implemented
+status: Code complete — UAT + deploy pending
+stopped_at: Phases 6-9 implemented and committed (2026-07-13)
+last_updated: "2026-07-13T00:00:00.000Z"
 progress:
   total_phases: 9
-  completed_phases: 5
-  total_plans: 18
-  completed_plans: 18
+  completed_phases: 9
+  total_plans: 22
+  completed_plans: 22
 ---
 
 # Project State
@@ -20,15 +20,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** O dono da academia sabe, sem esforco, quais alunos estao sumindo e recebe um empurrao para agir antes de perde-los.
-**Current focus:** Phase 05 — dashboard-member-overview
+**Current focus:** UAT + deploy (apply migration 005, verify Vercel env vars, run smoke test)
 
 ## Current Status
 
-**Phase:** 6
-**Current Plan:** Not started
+**Phase:** 9 (complete — UAT pending)
+**Current Plan:** —
 **Milestone:** MVP v1.0
-**Last session:** 2026-04-06T15:37:26.720Z
-**Stopped at:** Completed 05-03-PLAN.md (paginated check-in history table)
+**Last session:** 2026-07-13
+**Stopped at:** Phases 6-9 implemented: contacted marking, manual churn check, cron engine, Resend emails, hardening
 
 ## Decisions
 
@@ -65,6 +65,15 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [Phase 05]: user_agent excluded from check-in history table (D-13); only Data, Horário, IP columns shown
 - [Phase 05]: Server Component paginated fetch pattern: .select(..., { count: 'exact' }).range(from, to) with URL ?page= param drives re-fetch
 
+- [Phase 06]: Alert "blocking" rule: unresolved AND (contact_marked_at IS NULL OR within 7-day window) — expired contact window triggers a fresh alert (D-05/D-12/D-13)
+- [Phase 06]: markContacted on member without open alert creates an already-contacted alert; Phase 8 only emails alerts with contact_marked_at IS NULL (no email for already-handled members)
+- [Phase 07]: Middleware exempts /api/cron/* — cron authenticates via CRON_SECRET bearer, not session
+- [Phase 08]: Email template is a plain HTML string function (not react-email render) — unit-testable, no client rendering
+- [Phase 08]: Pending email = email_sent_at, resolved_at AND contact_marked_at all NULL; batch cap 100/run, remainder next run
+- [Phase 09]: Check-in rate limit is per-IP (10/5min) — gym QR is shared, per-QR limiting would block peak-hour traffic
+- [Phase 09]: last_churn_check_at on organizations (migration 005) stamped by detectChurn even on zero-candidate runs
+- [Phase 09]: LocalDateTime client component renders UTC fallback then browser-local after hydration (Pitfall 10)
+
 ## Performance Metrics
 
 | Phase | Plan | Duration (s) | Tasks | Files |
@@ -93,9 +102,9 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 - [ ] Phase 3: Member Management
 - [ ] Phase 4: QR Check-In Flow
 - [ ] Phase 5: Dashboard - Member Overview
-- [ ] Phase 6: Dashboard - Actions & Churn Fallback
-- [ ] Phase 7: Churn Detection Engine
-- [ ] Phase 8: Email Alerts & Delivery
+- [x] Phase 6: Dashboard - Actions & Churn Fallback
+- [x] Phase 7: Churn Detection Engine
+- [x] Phase 8: Email Alerts & Delivery
 - [ ] Phase 9: Polish, Edge Cases & Launch Hardening
 
 ## Notes

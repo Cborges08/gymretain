@@ -16,11 +16,12 @@
  (completed 2026-03-30)
 - [x] **Phase 4: QR Check-In Flow** - Member scans QR code and registers check-in without login; duplicates blocked; audit trail recorded
  (completed 2026-04-01)
-- [x] **Phase 5: Dashboard — Member Overview** - Admin sees all members sorted by inactivity, with risk counts and paginated check-in history (completed 2026-04-06)
-- [ ] **Phase 6: Dashboard — Actions & Churn Fallback** - Admin can mark member as contacted; manual churn check button available as cron fallback
-- [ ] **Phase 7: Churn Detection Engine** - Nightly cron job identifies inactive members using service role key; alerts created in DB
-- [ ] **Phase 8: Email Alerts & Delivery** - Admin receives contextual churn alert emails via Resend; idempotency, batching, and failure logging in place
-- [ ] **Phase 9: Polish, Edge Cases & Launch Hardening** - Rate limiting, error boundaries, free tier monitoring, and end-to-end smoke test complete
+- [x] **Phase 5: Dashboard — Member Overview** - Admin sees all members sorted by inactivity, with risk counts and paginated check-in history
+ (completed 2026-04-06)
+- [x] **Phase 6: Dashboard — Actions & Churn Fallback** - Admin can mark member as contacted; manual churn check button available as cron fallback (completed 2026-07-13)
+- [x] **Phase 7: Churn Detection Engine** - Nightly cron job identifies inactive members using service role key; alerts created in DB (completed 2026-07-13)
+- [x] **Phase 8: Email Alerts & Delivery** - Admin receives contextual churn alert emails via Resend; idempotency, batching, and failure logging in place (completed 2026-07-13)
+- [x] **Phase 9: Polish, Edge Cases & Launch Hardening** - Rate limiting, error boundaries, free tier monitoring implemented (code complete 2026-07-13; end-to-end smoke test pending UAT)
 
 ---
 
@@ -345,10 +346,10 @@ Plans:
 | 3. Member Management | 5/5 | Complete   | 2026-03-30 |
 | 4. QR Check-In Flow | 2/2 | Complete   | 2026-04-01 |
 | 5. Dashboard — Member Overview | 3/3 | Complete   | 2026-04-06 |
-| 6. Dashboard — Actions & Churn Fallback | 0/? | Not started | - |
-| 7. Churn Detection Engine | 0/? | Not started | - |
-| 8. Email Alerts & Delivery | 0/? | Not started | - |
-| 9. Polish, Edge Cases & Launch Hardening | 0/? | Not started | - |
+| 6. Dashboard — Actions & Churn Fallback | 1/1 | Complete   | 2026-07-13 |
+| 7. Churn Detection Engine | 1/1 | Complete   | 2026-07-13 |
+| 8. Email Alerts & Delivery | 1/1 | Complete   | 2026-07-13 |
+| 9. Polish, Edge Cases & Launch Hardening | 1/1 | Code complete (UAT pending) | 2026-07-13 |
 
 ---
 
@@ -435,4 +436,4 @@ The phase sequence follows hard dependency constraints from the architecture:
 ---
 
 *Roadmap created: 2026-03-25*
-*Last updated: 2026-03-25 after initial creation*
+*Last updated: 2026-07-13 — Phases 6-9 implemented (contacted marking, churn cron, Resend emails, hardening)*
