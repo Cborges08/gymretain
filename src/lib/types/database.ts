@@ -12,6 +12,7 @@ export type Organization = {
   name: string;
   admin_email: string;
   qr_code_hash: string;   // Gym-level QR code (migration 004). Posted at entrance for member check-in.
+  last_churn_check_at: string | null;  // Stamped by detectChurn() on every run (migration 005, Pitfall 3)
   created_at: string;
   updated_at: string;
 }
@@ -61,7 +62,9 @@ export interface Database {
     Tables: {
       organizations: {
         Row: Organization;
-        Insert: Omit<Organization, 'id' | 'created_at' | 'updated_at'>;
+        // last_churn_check_at optional on Insert — NULL until the first churn run
+        Insert: Omit<Organization, 'id' | 'created_at' | 'updated_at' | 'last_churn_check_at'> &
+          { last_churn_check_at?: string | null };
         Update: Partial<Omit<Organization, 'id' | 'created_at'>>;
         Relationships: [];
       };

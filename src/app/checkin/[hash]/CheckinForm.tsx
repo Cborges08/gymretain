@@ -70,6 +70,8 @@ export function CheckinForm({ orgId: _orgId, orgName: _orgName, qrHash }: Checki
           setError('CPF não encontrado ou não cadastrado.')
         } else if (data.code === 'INVALID_HASH') {
           setError('QR Code inválido.')
+        } else if (data.code === 'RATE_LIMITED') {
+          setError('Muitas tentativas. Aguarde alguns minutos e tente novamente.')
         } else {
           setError('Não foi possível registrar seu check-in. Tente novamente.')
         }

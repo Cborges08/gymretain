@@ -47,9 +47,15 @@ function buildChurnMock({
   const alertsChain = chainable(alertsResult ?? { data: [], error: null })
   const insertFn = vi.fn().mockResolvedValue(insertResult)
 
+  // organizations stamp chain (Phase 9): .update().eq() or .update().gte()
+  const stampEq = vi.fn().mockResolvedValue({ error: null })
+  const stampGte = vi.fn().mockResolvedValue({ error: null })
+  const stampUpdate = vi.fn().mockReturnValue({ eq: stampEq, gte: stampGte })
+
   const from = vi.fn((table: string) => {
     if (table === 'members') return membersChain
     if (table === 'alerts') return { ...alertsChain, insert: insertFn }
+    if (table === 'organizations') return { update: stampUpdate }
     return {}
   })
 
@@ -58,6 +64,9 @@ function buildChurnMock({
     from,
     membersChain,
     insertFn,
+    stampUpdate,
+    stampEq,
+    stampGte,
   }
 }
 

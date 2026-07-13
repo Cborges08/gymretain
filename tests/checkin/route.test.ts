@@ -125,8 +125,12 @@ function buildMockSupabase({
 // ---------------------------------------------------------------------------
 
 describe('POST /api/checkin', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     vi.clearAllMocks()
+    // Phase 9: limiter state is module-level — reset so tests from the same
+    // mock IP never trip the per-IP rate limit
+    const { resetRateLimiter } = await import('@/lib/utils/rate-limit')
+    resetRateLimiter()
   })
 
   // 4-01-02: Valid qr_hash + cpf → 200 success

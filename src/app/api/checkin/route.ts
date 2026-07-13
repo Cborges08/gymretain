@@ -19,9 +19,22 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceRoleClient } from '@/lib/supabase/service'
 import { stripCpf } from '@/lib/utils/cpf'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
+
+/** Max check-in attempts per IP inside the 5-minute window (Phase 9). */
+const CHECKIN_RATE_LIMIT = 10
 
 export async function POST(request: NextRequest) {
   try {
+    // Step 0 — Rate limit per IP BEFORE any parsing or DB access (Pitfall 1).
+    // The gym QR is shared by all members, so limiting per QR hash would
+    // block legitimate peak-hour traffic; per-IP stops CPF enumeration and
+    // replay from a single client (curl included — backend-enforced).
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? null
+    if (!checkRateLimit(`checkin:${ip ?? 'unknown'}`, { limit: CHECKIN_RATE_LIMIT })) {
+      return NextResponse.json({ ok: false, code: 'RATE_LIMITED' }, { status: 429 })
+    }
+
     // Step 1 — Parse body
     const body = await request.json() as { qr_hash?: string; cpf?: string }
     const { qr_hash, cpf: rawCpf } = body
@@ -36,7 +49,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Step 2 — Extract audit headers
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? null
     const userAgent = request.headers.get('user-agent') ?? null
 
     // Step 3 — Validate QR hash (organizations table)

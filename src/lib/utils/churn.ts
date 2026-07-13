@@ -68,6 +68,8 @@ export async function detectChurn(
   }
 
   if (!members || members.length === 0) {
+    // Still a completed run — stamp it so the dashboard shows the check ran
+    await stampLastChurnCheck(supabase, new Date(now).toISOString(), orgId)
     return { membersChecked: 0, alertsCreated: 0, skippedExisting: 0 }
   }
 
@@ -112,9 +114,37 @@ export async function detectChurn(
     }
   }
 
+  // 4 — Stamp last_churn_check_at so the dashboard can show "Última
+  // verificação" (Phase 9, Pitfall 3: silent cron failure visibility).
+  await stampLastChurnCheck(supabase, triggeredAt, orgId)
+
   return {
     membersChecked: members.length,
     alertsCreated: toInsert.length,
     skippedExisting: members.length - toInsert.length,
+  }
+}
+
+/**
+ * Records when churn detection last ran (migration 005).
+ * Best-effort: a stamp failure is logged but never fails the run.
+ */
+async function stampLastChurnCheck(
+  supabase: SupabaseClient<Database>,
+  checkedAt: string,
+  orgId?: string
+): Promise<void> {
+  const stampQuery = supabase
+    .from('organizations')
+    .update({ last_churn_check_at: checkedAt })
+
+  const { error } = orgId
+    ? await stampQuery.eq('id', orgId)
+    : // No org filter on cron runs — supabase-js requires SOME filter on
+      // UPDATE, so match every row via an always-true created_at bound.
+      await stampQuery.gte('created_at', '1970-01-01T00:00:00Z')
+
+  if (error) {
+    console.error('[churn] failed to stamp last_churn_check_at:', error.message)
   }
 }

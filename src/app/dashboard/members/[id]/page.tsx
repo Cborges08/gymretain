@@ -5,6 +5,7 @@ import { maskCpf } from '@/lib/utils/cpf'
 import { getPaginationRange, getTotalPages } from '@/lib/utils/members'
 import { DeactivateButton } from './DeactivateButton'
 import { ReactivateButton } from './ReactivateButton'
+import { LocalDateTime } from '@/components/LocalDateTime'
 
 interface Props {
   params: { id: string }
@@ -146,18 +147,19 @@ export default async function MemberProfilePage({ params, searchParams }: Props)
                     </tr>
                   </thead>
                   <tbody>
-                    {checkinList.map((checkin) => {
-                      const dt = new Date(checkin.checked_in_at)
-                      const date = dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })
-                      const time = dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-                      return (
-                        <tr key={checkin.id} className="border-b border-gray-200 last:border-0">
-                          <td className="px-4 py-3 text-gray-900">{date}</td>
-                          <td className="px-4 py-3 text-gray-600">{time}</td>
-                          <td className="px-4 py-3 text-gray-600">{checkin.ip_address ?? '—'}</td>
-                        </tr>
-                      )
-                    })}
+                    {checkinList.map((checkin) => (
+                      /* Timestamps stored as UTC; rendered in the admin's
+                         browser timezone via LocalDateTime (Pitfall 10) */
+                      <tr key={checkin.id} className="border-b border-gray-200 last:border-0">
+                        <td className="px-4 py-3 text-gray-900">
+                          <LocalDateTime iso={checkin.checked_in_at} mode="date" />
+                        </td>
+                        <td className="px-4 py-3 text-gray-600">
+                          <LocalDateTime iso={checkin.checked_in_at} mode="time" />
+                        </td>
+                        <td className="px-4 py-3 text-gray-600">{checkin.ip_address ?? '—'}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
