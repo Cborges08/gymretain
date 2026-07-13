@@ -103,7 +103,7 @@ export default function MemberNewPage() {
             <div className="flex items-center gap-3">
               <SubmitButton />
               <Link
-                href="/members"
+                href="/dashboard/members"
                 className="text-gray-600 hover:text-gray-900 text-sm"
               >
                 Cancelar

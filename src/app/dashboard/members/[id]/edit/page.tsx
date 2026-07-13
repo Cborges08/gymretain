@@ -26,12 +26,12 @@ export default async function MemberEditPage({ params }: Props) {
     <div className="bg-gray-50 min-h-full p-8">
       <div className="max-w-lg mx-auto">
         <div className="flex items-center gap-3 mb-2">
-          <a href="/members" className="text-sm text-gray-500 hover:text-gray-900">
+          <a href="/dashboard/members" className="text-sm text-gray-500 hover:text-gray-900">
             Membros
           </a>
           <span className="text-gray-300">/</span>
           <a
-            href={`/members/${member.id}`}
+            href={`/dashboard/members/${member.id}`}
             className="text-sm text-gray-500 hover:text-gray-900"
           >
             {member.name}

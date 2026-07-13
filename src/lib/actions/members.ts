@@ -75,7 +75,7 @@ export async function createMemberAction(
     return { error: 'Erro ao cadastrar membro. Tente novamente.' }
   }
 
-  redirect(`/members/${data.id}`)
+  redirect(`/dashboard/members/${data.id}`)
 }
 
 export async function updateMemberAction(
@@ -120,7 +120,7 @@ export async function updateMemberAction(
     return { error: 'Erro ao atualizar membro. Tente novamente.' }
   }
 
-  redirect(`/members/${id}`)
+  redirect(`/dashboard/members/${id}`)
 }
 
 export async function deactivateMemberAction(
@@ -150,5 +150,5 @@ export async function deactivateMemberAction(
     return { error: 'Erro ao atualizar status. Tente novamente.' }
   }
 
-  redirect(`/members/${id}`)
+  redirect(`/dashboard/members/${id}`)
 }

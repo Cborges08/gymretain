@@ -22,10 +22,10 @@ describe('Phase 2: Middleware Route Protection (AUTH-04, AUTH-05)', () => {
   });
 
   describe('Edge Runtime compatibility', () => {
-    it('uses createServerClient from @supabase/auth-helpers-nextjs with request/response cookies — Edge Runtime safe', () => {
+    it('uses createServerClient from @supabase/ssr with request/response cookies — Edge Runtime safe', () => {
       const source = readFileSync(MIDDLEWARE_PATH, 'utf-8');
       // Must import from the package directly (not from src/lib/supabase/server.ts which uses next/headers)
-      expect(source).toContain("from '@supabase/auth-helpers-nextjs'");
+      expect(source).toContain("from '@supabase/ssr'");
       expect(source).toContain('createServerClient');
     });
 
@@ -54,14 +54,18 @@ describe('Phase 2: Middleware Route Protection (AUTH-04, AUTH-05)', () => {
   });
 
   describe('AUTH-05: Route protection', () => {
-    it('protects /dashboard routes', () => {
+    it('protects all routes by default (deny-by-default), exempting only public routes', () => {
       const source = readFileSync(MIDDLEWARE_PATH, 'utf-8');
-      expect(source).toContain("pathname.startsWith('/dashboard')");
+      // Deny-by-default: isProtected is the negation of the public route checks,
+      // so /dashboard/* and /api/admin/* are covered without an explicit allow-list.
+      expect(source).toContain('const isProtected = !(');
+      expect(source).toContain("pathname.startsWith('/auth')");
     });
 
-    it('protects /api/admin routes', () => {
+    it('exempts the public check-in page and API from protection', () => {
       const source = readFileSync(MIDDLEWARE_PATH, 'utf-8');
-      expect(source).toContain("pathname.startsWith('/api/admin')");
+      expect(source).toContain("pathname.startsWith('/checkin')");
+      expect(source).toContain("pathname.startsWith('/api/checkin')");
     });
 
     it('redirects unauthenticated requests to /auth/login', () => {

@@ -25,7 +25,7 @@ export default async function MembersPage() {
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-semibold text-gray-900">Membros</h1>
         <Link
-          href="/members/new"
+          href="/dashboard/members/new"
           className="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors"
         >
           + Novo Membro
@@ -79,7 +79,7 @@ export default async function MembersPage() {
                 >
                   <td className="px-4 py-3 text-sm text-gray-900">
                     <Link
-                      href={`/members/${member.id}`}
+                      href={`/dashboard/members/${member.id}`}
                       className="font-medium hover:text-emerald-600 block w-full"
                     >
                       {member.name}

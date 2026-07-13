@@ -37,7 +37,8 @@ export async function middleware(request: NextRequest) {
   const isPublicCheckinRoute = pathname.startsWith('/checkin')
   const isPublicCheckinApi = pathname.startsWith('/api/checkin')
 
-  // "(dashboard)" is a route group, so its URLs are "/", "/members", and "/qr-code".
+  // Deny-by-default: every route is protected unless explicitly public.
+  // Covers /dashboard/* and any future /api/admin/* without an allow-list.
   const isProtected = !(
     isAuthRoute ||
     isPublicCheckinRoute ||
