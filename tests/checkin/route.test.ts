@@ -85,6 +85,11 @@ function buildMockSupabase({
   const updateEq = vi.fn().mockResolvedValue({ error: null })
   const updateFn = vi.fn().mockReturnValue({ eq: updateEq })
 
+  // alerts resolution chain (Phase 6): .update().eq().is()
+  const alertsIs = vi.fn().mockResolvedValue({ error: null })
+  const alertsEq = vi.fn().mockReturnValue({ is: alertsIs })
+  const alertsUpdate = vi.fn().mockReturnValue({ eq: alertsEq })
+
   // The checkins table is accessed twice: once for dup-check (select) and once for insert.
   // We track the call count to return the right builder.
   let checkinsCallCount = 0
@@ -106,10 +111,13 @@ function buildMockSupabase({
         return { insert: insertFn }
       }
     }
+    if (table === 'alerts') {
+      return { update: alertsUpdate }
+    }
     return {}
   })
 
-  return { mockFrom, insertFn, updateEq, updateFn }
+  return { mockFrom, insertFn, updateEq, updateFn, alertsUpdate, alertsEq, alertsIs }
 }
 
 // ---------------------------------------------------------------------------

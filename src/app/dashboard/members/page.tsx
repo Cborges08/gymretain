@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import { createServerClient } from '@/lib/supabase/server'
 import { getDaysAgo, formatLastCheckin, classifyRisk, computeCounters } from '@/lib/utils/members'
+import { CONTACT_SILENCE_DAYS } from '@/lib/utils/churn'
+import { MarkContactedButton } from './MarkContactedButton'
+import { VerificarAgoraButton } from './VerificarAgoraButton'
 
 export default async function MembersPage() {
   const supabase = createServerClient()
@@ -19,17 +22,36 @@ export default async function MembersPage() {
   const memberList = members ?? []
   const counters = computeCounters(memberList)
 
+  // Contacted members (D-16): open alerts marked contacted within the 7-day
+  // silence window. Set gives O(1) lookup per table row.
+  const contactCutoff = new Date(
+    Date.now() - CONTACT_SILENCE_DAYS * 24 * 60 * 60 * 1000
+  ).toISOString()
+  const { data: contactedAlerts } = org_id
+    ? await supabase
+        .from('alerts')
+        .select('member_id')
+        .eq('org_id', org_id)
+        .is('resolved_at', null)
+        .gte('contact_marked_at', contactCutoff)
+    : { data: [] }
+
+  const contactedIds = new Set((contactedAlerts ?? []).map((a) => a.member_id))
+
   return (
     <div className="bg-gray-50 min-h-full p-8">
       {/* Page header */}
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-semibold text-gray-900">Membros</h1>
-        <Link
-          href="/dashboard/members/new"
-          className="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors"
-        >
-          + Novo Membro
-        </Link>
+        <div className="flex items-center gap-3">
+          <VerificarAgoraButton />
+          <Link
+            href="/dashboard/members/new"
+            className="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors"
+          >
+            + Novo Membro
+          </Link>
+        </div>
       </div>
 
       {/* Risk counters — per D-06, D-07, D-08 */}
@@ -69,6 +91,7 @@ export default async function MembersPage() {
                 <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Email</th>
                 <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Dias sem aparecer</th>
                 <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Nível de risco</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-900">Ação</th>
               </tr>
             </thead>
             <tbody>
@@ -108,6 +131,22 @@ export default async function MembersPage() {
                           {labels[risk]}
                         </span>
                       )
+                    })()}
+                  </td>
+                  <td className="px-4 py-3">
+                    {(() => {
+                      // Ação column (D-01/D-04/D-05): only at-risk/inactive
+                      // members get an action — button OR badge, never both.
+                      const risk = classifyRisk(getDaysAgo(member.last_checked_in))
+                      if (risk === 'active') return null
+                      if (contactedIds.has(member.id)) {
+                        return (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
+                            Contatado
+                          </span>
+                        )
+                      }
+                      return <MarkContactedButton memberId={member.id} />
                     })()}
                   </td>
                 </tr>

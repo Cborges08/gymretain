@@ -109,7 +109,16 @@ export async function POST(request: NextRequest) {
       .update({ last_checked_in: checkin.checked_in_at })
       .eq('id', member.id)
 
-    // Step 8 — Return success
+    // Step 8 — Resolve open churn alerts (Phase 6, D-18)
+    // Member showed up: clear any active alert, including "contacted" ones,
+    // so the contacted status auto-clears without admin intervention.
+    await supabase
+      .from('alerts')
+      .update({ resolved_at: checkin.checked_in_at })
+      .eq('member_id', member.id)
+      .is('resolved_at', null)
+
+    // Step 9 — Return success
     return NextResponse.json({
       ok: true,
       memberName: member.name,
